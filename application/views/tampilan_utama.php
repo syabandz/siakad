@@ -8,8 +8,7 @@
     <!--<![endif]-->
     <!-- start: HEAD -->
     <head>
-        <title>Siakad smk pgri tamsel</title>
-        <link rel="shortcut icon" href="<?php echo base_url()?>uploads/logopgri.jpg">
+        <title>Siakad SMAIT Thariq Bin Ziyad</title>
         <!-- start: META -->
         <meta charset="utf-8" />
         <!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
@@ -20,6 +19,7 @@
         <meta content="" name="author" />
         <!-- end: META -->
         <!-- start: MAIN CSS -->
+        <link rel="shortcut icon" href="<?php echo base_url()?>uploads/siakad1.png">
         <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/style.css">
@@ -30,8 +30,6 @@
         <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/theme_light.css" type="text/css" id="skin_color">
         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/print.css" type="text/css" media="print"/>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
         <!--[if IE 7]>
         <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
         <![endif]-->
@@ -39,7 +37,6 @@
         <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
         <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/fullcalendar/fullcalendar/fullcalendar.css">
         <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
-        <link rel="shortcut icon" href="favicon.ico" />
     </head>
     <!-- end: HEAD -->
     <!-- start: BODY -->
@@ -49,23 +46,11 @@
             <!-- start: TOP NAVIGATION CONTAINER -->
             <div class="container">
                 <div class="navbar-header">
-                    <!-- start: RESPONSIVE MENU TOGGLER -->
-                    <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
-                        <span class="clip-list-2"></span>
-                    </button>
-                    <!-- end: RESPONSIVE MENU TOGGLER -->
                     <!-- start: LOGO -->
-                    <a class="navbar-brand" href="index.html">
-                        SMK PGRI 1 TAMSEL
+                    <a class="navbar-brand" href="<?php echo base_url()?>siakad" style="height: 50px;">
+                    Siakad SMAIT Thariq Bin Ziyad
                     </a>
                     <!-- end: LOGO -->
-                </div>
-                <div class="navbar-tools">
-                    <!-- start: TOP NAVIGATION MENU -->
-                    <ul class="nav navbar-right">
-                        <!-- start: TO-DO DROPDOWN -->
-                        
-                    <!-- end: TOP NAVIGATION MENU -->
                 </div>
             </div>
             <!-- end: TOP NAVIGATION CONTAINER -->
@@ -76,17 +61,10 @@
             <div class="navbar-content">
                 <!-- start: SIDEBAR -->
                 <div class="main-navigation navbar-collapse collapse">
-                    <!-- start: MAIN MENU TOGGLER BUTTON -->
-                    
-                    <!-- end: MAIN MENU TOGGLER BUTTON -->
                     <!-- start: MAIN NAVIGATION MENU -->
                     <ul class="main-navigation-menu">
-                       <img src="<?php echo base_url();?>uploads/logopgri.jpg" width='225px' alt="">
-
-                               
-
+                       <img src="<?php echo base_url();?>uploads/siakad1.png" width='180px' alt="" style="margin-left: 20px; margin-top: 20px;">
                      </ul>
-                     </div>       
                     <!-- end: MAIN NAVIGATION MENU -->
                 </div>
                 <!-- end: SIDEBAR -->
@@ -128,74 +106,63 @@
 
                             <!-- start: PAGE TITLE & BREADCRUMB -->
                             <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <ul class="nav navbar-nav">
-        
-        <li><a href="<?php echo base_url()?>index.php/sekolah">profile sekolah</a></li>
-        
-      </ul>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        
-        <li><a href="<?php echo base_url()?>index.php/auth">login</a></li>
-        
-      </ul>
-      <ul class="nav navbar-nav">
-        
-        <li><a href="<?php echo base_url()?>index.php/Post_berita/lists">informasi</a></li>
-        
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="<?php echo base_url()?>index.php/galeri">galeri</a></li>
-        <li><a href="<?php echo base_url()?>index.php/absensi">kehadiran</a></li>
-        
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+                                <div class="container-fluid">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                    <ul class="nav navbar-nav">        
+                                        <li><a href="<?php echo base_url()?>sekolah">profil sekolah</a></li>
+                                    </ul>
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="<?php echo base_url()?>Post_berita/lists">informasi</a></li>
+                                    </ul>
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="<?php echo base_url()?>galeri">galeri</a></li>
+                                    </ul>
+                                    <ul class="nav navbar-nav navbar-right">                                            
+                                        <li><a href="<?php echo base_url()?>auth">login</a></li>
+                                    </ul>
+                                </div><!-- /.container-fluid -->
+                            </nav>
                             <!-- end: PAGE TITLE & BREADCRUMB -->
                         </div>
                     </div>
                     <!-- end: PAGE HEADER -->
                     <!-- start: PAGE CONTENT -->
                     <?php echo $contents;?>
-            <!-- end: PAGE -->
-        </div>
-        <!-- end: MAIN CONTAINER -->
-        <!-- start: FOOTER -->
-        <div class="footer clearfix">
-            <div class="footer-inner">
-                2014 &copy; clip-one by cliptheme.
-            </div>
-            <div class="footer-items">
-                <span class="go-top"><i class="clip-chevron-up"></i></span>
-            </div>
-        </div>
-        <!-- end: FOOTER -->
-        <div id="event-management" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                            &times;
-                        </button>
-                        <h4 class="modal-title">Event Management</h4>
+                    <!-- end: PAGE -->
+                </div>
+                <!-- end: MAIN CONTAINER -->
+                <!-- start: FOOTER -->
+                <div class="footer clearfix">
+                    <div class="footer-inner">
+                        2020 &copy; created by syabandz
                     </div>
-                    <div class="modal-body"></div>
-                    <div class="modal-footer">
-                        <button type="button" data-dismiss="modal" class="btn btn-light-grey">
-                            Close
-                        </button>
-                        <button type="button" class="btn btn-danger remove-event no-display">
-                            <i class='fa fa-trash-o'></i> Delete Event
-                        </button>
-                        <button type='submit' class='btn btn-success save-event'>
-                            <i class='fa fa-check'></i> Save
-                        </button>
+                    <div class="footer-items">
+                        <span class="go-top"><i class="clip-chevron-up"></i></span>
+                    </div>
+                </div>
+                <!-- end: FOOTER -->
+                <div id="event-management" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title">Event Management</h4>
+                            </div>
+                            <div class="modal-body"></div>
+                            <div class="modal-footer">
+                                <button type="button" data-dismiss="modal" class="btn btn-light-grey">
+                                    Close
+                                </button>
+                                <button type="button" class="btn btn-danger remove-event no-display">
+                                    <i class='fa fa-trash-o'></i> Delete Event
+                                </button>
+                                <button type='submit' class='btn btn-success save-event'>
+                                    <i class='fa fa-check'></i> Save
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -204,11 +171,11 @@
         <!--[if lt IE 9]>
         <script src="<?php echo base_url();?>assets/plugins/respond.min.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/excanvas.min.js"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <![endif]-->
         <!--[if gte IE 9]><!-->
         
         <!--<![endif]-->
+        <script src="<?php echo base_url();?>assets/jquery/jquery-2.2.3.min.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
