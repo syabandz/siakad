@@ -1,5 +1,5 @@
 <body class="login example2">
-    <div class="main-login col-sm-5 col-sm-offset-3"  style="margin-top:20px; margin-bottom: 50px;">
+    <div class="main-login col-sm-5 col-sm-offset-3"  style="margin-top:5px; margin-bottom: 50px;">
         <div class="logo">SISTEM INFORMASI AKADEMIK </div>
         <!-- start: LOGIN BOX -->
         <div class="box-login">

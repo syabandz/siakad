@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Biodata extends CI_Controller {
 			function __construct(){
 			parent:: __construct();
-            //chekAksesModule();
+            // chekAksesModule();
 			$this->load->library('ssp') ;
 
 		}

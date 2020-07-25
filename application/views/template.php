@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -8,8 +7,7 @@
     <!--<![endif]-->
     <!-- start: HEAD -->
     <head>
-        <title>siakad smk pgri 1 tambun selatan</title>
-        <link rel="shortcut icon" href="<?php echo base_url()?>uploads/logopgri.jpg">
+        <title>Siakad SMAIT Thariq Bin Ziyad</title>
         <!-- start: META -->
         <meta charset="utf-8" />
         <!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
@@ -20,6 +18,7 @@
         <meta content="" name="author" />
         <!-- end: META -->
         <!-- start: MAIN CSS -->
+        <link rel="shortcut icon" href="<?php echo base_url()?>uploads/siakad1.png">
         <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/style.css">
@@ -30,10 +29,6 @@
         <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/theme_light.css" type="text/css" id="skin_color">
         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/print.css" type="text/css" media="print"/>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/calendar.css');?>" />
-        <script type="text/javascript" src="<?php echo base_url('assets/js/calendar.js'); ?>"></script>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
         <!--[if IE 7]>
         <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
         <![endif]-->
@@ -41,7 +36,6 @@
         <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
         <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/fullcalendar/fullcalendar/fullcalendar.css">
         <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
-        <link rel="shortcut icon" href="favicon.ico" />
     </head>
     <!-- end: HEAD -->
     <!-- start: BODY -->
@@ -57,38 +51,31 @@
                     </button>
                     <!-- end: RESPONSIVE MENU TOGGLER -->
                     <!-- start: LOGO -->
-                    <a class="navbar-brand" href="index.html">
-                        SMK PGRI 1 TAMSEL
+                    <a class="navbar-brand" href="<?php echo base_url()?>welcome" style="height: 50px;">
+                        Siakad SMAIT Thariq Bin Ziyad
                     </a>
                     <!-- end: LOGO -->
                 </div>
                 <div class="navbar-tools">
                     <!-- start: TOP NAVIGATION MENU -->
                     <ul class="nav navbar-right">
-                        <!-- start: TO-DO DROPDOWN -->
-                        
-                        <!-- end: MESSAGE DROPDOWN -->
                         <!-- start: USER DROPDOWN -->
                         <li class="dropdown current-user">
                             <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-                                <img class="circle-img" width='40px'src="<?php echo base_url('/uploads/foto_user/'.$this->session->userdata('foto'));?>"/>
                                 <span class="username"><?php echo $this->session->userdata('nama_lengkap') ?></span>
                                 <i class="clip-chevron-down"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="<?php echo base_url();?>index.php/biodata">
-                                        <i class="fa fa-male"></i>
-                                        &nbsp;My Profile
-                                    </a>
-                                <li>
-                               
-                                        <?php
-                                            echo anchor('auth/logout', '<i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp;Log Out');
-                                        ?>
+                                    <a href="<?php echo base_url();?>biodata">
+                                        <i class="fa fa-male"></i> &nbsp;User Profil
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="<?php echo base_url();?>auth/logout">
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp;Log Out
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <!-- end: USER DROPDOWN -->
@@ -106,17 +93,14 @@
                 <div class="main-navigation navbar-collapse collapse">
                     <!-- start: MAIN MENU TOGGLER BUTTON -->
                     <ul class="main-navigation-menu">
-                       <img src="<?php echo base_url();?>uploads/logopgri.jpg" width='225px' alt="">
-
-                               
-
+                        <a href="<?php echo base_url();?>welcome">
+                            <img src="<?php echo base_url();?>uploads/siakad1" width='120px' style="margin-left: 50px; margin-top: 20px; margin-bottom: 20px;">
+                        </a>
                      </ul>
-
                     <!-- end: MAIN MENU TOGGLER BUTTON -->
                     <!-- start: MAIN NAVIGATION MENU -->
                     <ul class="main-navigation-menu">
                         <?php
-                        
                         $id_level_user = $this->session->userdata('id_level_user');
                         $sql_menu = "SELECT * FROM tabel_menu WHERE id in(select id_menu from tbl_user_rule where id_level_user=$id_level_user) and is_main_menu=0";
                         $main_menu = $this->db->query($sql_menu)->result();
@@ -145,9 +129,7 @@
                             }
                         }
                         ?>
-                       
                      </ul>
-                     </div>       
                     <!-- end: MAIN NAVIGATION MENU -->
                 </div>
                 <!-- end: SIDEBAR -->
@@ -183,79 +165,32 @@
                 <!-- /.modal -->
                 <!-- end: SPANEL CONFIGURATION MODAL FORM -->
                 <div class="container">
-                    <!-- start: PAGE HEADER -->
-                    <div class="row">
-                        <div class="col-sm-12">
-
-                            <!-- start: PAGE TITLE & BREADCRUMB -->
-                            <ol class="breadcrumb">
-                                <li>
-                                    <i class="clip-home-3"></i>
-                                    <a href="<?php echo base_url()?>index.php/smk_pgri">
-                                        Home
-                                    </a>
-                                </li>
-                                <li class="active">
-                                    Dashboard
-                                </li>
-                                
-                            </ol>
-                            <div class="page-header">
-                                <h1>Dashboard <small>overview &amp; stats </small></h1>
-                            </div>
-                           
-                            <!-- end: PAGE TITLE & BREADCRUMB -->
-                        </div>
-                    </div>
-                    <!-- end: PAGE HEADER -->
                     <!-- start: PAGE CONTENT -->
                     <?php echo $contents;?>
-            <!-- end: PAGE -->
-        </div>
-        <!-- end: MAIN CONTAINER -->
-        <!-- start: FOOTER -->
-        <div class="footer clearfix">
-            <div class="footer-inner">
-                2014 &copy; clip-one by cliptheme.
-            </div>
-            <div class="footer-items">
-                <span class="go-top"><i class="clip-chevron-up"></i></span>
-            </div>
-        </div>
-        <!-- end: FOOTER -->
-        <div id="event-management" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                            &times;
-                        </button>
-                        <h4 class="modal-title">Event Management</h4>
+                    <!-- end: PAGE -->
+                </div>
+                <!-- end: MAIN CONTAINER -->
+                <!-- start: FOOTER -->
+                <div class="footer clearfix">
+                    <div class="footer-inner">
+                        2020 &copy; created by syabandz
                     </div>
-                    <div class="modal-body"></div>
-                    <div class="modal-footer">
-                        <button type="button" data-dismiss="modal" class="btn btn-light-grey">
-                            Close
-                        </button>
-                        <button type="button" class="btn btn-danger remove-event no-display">
-                            <i class='fa fa-trash-o'></i> Delete Event
-                        </button>
-                        <button type='submit' class='btn btn-success save-event'>
-                            <i class='fa fa-check'></i> Save
-                        </button>
+                    <div class="footer-items">
+                        <span class="go-top"><i class="clip-chevron-up"></i></span>
                     </div>
                 </div>
+                <!-- end: FOOTER -->
             </div>
         </div>
         <!-- start: MAIN JAVASCRIPTS -->
         <!--[if lt IE 9]>
         <script src="<?php echo base_url();?>assets/plugins/respond.min.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/excanvas.min.js"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <![endif]-->
         <!--[if gte IE 9]><!-->
         
         <!--<![endif]-->
+        <script src="<?php echo base_url();?>assets/jquery/jquery-2.2.3.min.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
@@ -277,8 +212,8 @@
         <script src="<?php echo base_url();?>assets/plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/fullcalendar/fullcalendar/fullcalendar.js"></script>
         <script src="<?php echo base_url();?>assets/js/index.js"></script>
-        <script src="<?php echo base_url();?>assets/ui/jquery.ui.datepicker.js"></script>
-         <script src="<?php echo base_url();?>assets/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.0/jquery.dataTables.js"></script>
+        <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.js"></script>
         <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
         <script>
             jQuery(document).ready(function() {
@@ -286,7 +221,7 @@
                 Index.init();
             });
         </script>
-        <script>
+        <script type="text/javascript">
     $(function() {
         $( "#datepicker" ).datepicker({
                 changeMonth: true,

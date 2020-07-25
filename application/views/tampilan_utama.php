@@ -51,6 +51,22 @@
                     </a>
                     <!-- end: LOGO -->
                 </div>
+                <div class="navbar-tools">
+                    <!-- start: TOP NAVIGATION MENU -->
+                    <ul class="nav navbar-nav navbar-right">                                            
+                        <li><a href="<?php echo base_url()?>auth">&nbsp;&nbsp;Login</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">                                            
+                        <li><a href="<?php echo base_url()?>galeri">&nbsp;&nbsp;Galeri</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">                                            
+                        <li><a href="<?php echo base_url()?>post_berita">&nbsp;&nbsp;Informasi</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">                                            
+                        <li><a href="<?php echo base_url()?>sekolah">Profil</a></li>
+                    </ul>
+                    <!-- end: TOP NAVIGATION MENU -->
+                </div>
             </div>
             <!-- end: TOP NAVIGATION CONTAINER -->
         </div>
@@ -58,49 +74,34 @@
             <div class="navbar-content">
                 <!-- start: PAGE TITLE & BREADCRUMB -->
                 <nav class="navbar navbar-inverse">
-                    <div class="container-fluid">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <ul class="nav navbar-nav navbar-right">                                            
-                            <li><a href="<?php echo base_url()?>auth">Login</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">                                            
-                            <li><a href="<?php echo base_url()?>galeri">Galeri</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">                                            
-                            <li><a href="<?php echo base_url()?>post_berita">Informasi</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">                                            
-                            <li><a href="<?php echo base_url()?>sekolah">Profil&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
-                        </ul>
-                    </div>
                 </nav>
                 <!-- end: PAGE TITLE & BREADCRUMB -->
             </div>
         </div>
         <!-- end: HEADER -->
         <!-- start: MAIN CONTAINER -->
-            <!-- start: PAGE -->
-            <div class="container">
-                <nav class="navbar navbar-inverse">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <!-- start: PAGE CONTENT -->
-                        <?php echo $contents;?>
-                        <!-- end: PAGE -->
-                        </div>
+        <!-- start: PAGE -->
+        <div class="container">
+            <nav class="navbar navbar-inverse">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><br>
+                    <!-- start: PAGE CONTENT -->
+                    <?php echo $contents;?>
+                    <!-- end: PAGE -->
                     </div>
                 </div>
-                <!-- start: FOOTER -->
-                <div class="footer clearfix">
-                    <div class="footer-inner">
-                        2020 &copy; created by syabandz
-                    </div>
-                    <div class="footer-items">
-                        <span class="go-top"><i class="clip-chevron-up"></i></span>
-                    </div>
-                </div>
-                <!-- end: FOOTER -->
             </div>
+            <!-- start: FOOTER -->
+            <div class="footer clearfix">
+                <div class="footer-inner">
+                    2020 &copy; created by syabandz
+                </div>
+                <div class="footer-items">
+                    <span class="go-top"><i class="clip-chevron-up"></i></span>
+                </div>
+            </div>
+            <!-- end: FOOTER -->
+        </div>
         <!-- start: MAIN JAVASCRIPTS -->
         <!--[if lt IE 9]>
         <script src="<?php echo base_url();?>assets/plugins/respond.min.js"></script>
