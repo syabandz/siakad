@@ -63,7 +63,9 @@
                 <div class="main-navigation navbar-collapse collapse">
                     <!-- start: MAIN NAVIGATION MENU -->
                     <ul class="main-navigation-menu">
-                       <img src="<?php echo base_url();?>uploads/siakad1.png" width='180px' alt="" style="margin-left: 20px; margin-top: 20px;">
+                    <a href="<?php echo base_url()?>siakad">
+                        <img src="<?php echo base_url();?>uploads/siakad1.png" width='180px' alt="" style="margin-left: 20px; margin-top: 20px;">
+                    </a>
                      </ul>
                     <!-- end: MAIN NAVIGATION MENU -->
                 </div>
@@ -103,7 +105,6 @@
                     <!-- start: PAGE HEADER -->
                     <div class="row">
                         <div class="col-sm-12">
-
                             <!-- start: PAGE TITLE & BREADCRUMB -->
                             <nav class="navbar navbar-inverse">
                                 <div class="container-fluid">
@@ -130,7 +131,6 @@
                     <?php echo $contents;?>
                     <!-- end: PAGE -->
                 </div>
-                <!-- end: MAIN CONTAINER -->
                 <!-- start: FOOTER -->
                 <div class="footer clearfix">
                     <div class="footer-inner">
@@ -141,6 +141,7 @@
                     </div>
                 </div>
                 <!-- end: FOOTER -->
+                <!-- end: MAIN CONTAINER -->
                 <div id="event-management" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
                     <div class="modal-dialog">
                         <div class="modal-content">
