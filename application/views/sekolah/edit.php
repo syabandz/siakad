@@ -1,11 +1,10 @@
-<div class="col-sm-12">
+<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1">
     <!-- start: TEXT FIELDS PANEL -->
     <div class="panel panel-default">
         <div class="panel-heading">
-            <i class="fa fa-external-link-square"></i> Info Sekolah
+            <i class="fa fa-external-link-square"></i> Profil Sekolah
             <div class="panel-tools">
-                <a class="btn btn-xs btn-link panel-expand" href="#">
-                    <i class="fa fa-resize-full"></i>
+                <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
                 </a>
                 <a class="btn btn-xs btn-link panel-close" href="#">
                     <i class="fa fa-times"></i>

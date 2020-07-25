@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -48,88 +47,48 @@
                 <div class="navbar-header">
                     <!-- start: LOGO -->
                     <a class="navbar-brand" href="<?php echo base_url()?>siakad" style="height: 50px;">
-                    Siakad SMAIT Thariq Bin Ziyad
+                        Siakad SMAIT Thariq Bin Ziyad
                     </a>
                     <!-- end: LOGO -->
                 </div>
             </div>
             <!-- end: TOP NAVIGATION CONTAINER -->
         </div>
-        <!-- end: HEADER -->
-        <!-- start: MAIN CONTAINER -->
         <div class="main-container">
             <div class="navbar-content">
-                <!-- start: SIDEBAR -->
-                <div class="main-navigation navbar-collapse collapse">
-                    <!-- start: MAIN NAVIGATION MENU -->
-                    <ul class="main-navigation-menu">
-                    <a href="<?php echo base_url()?>siakad">
-                        <img src="<?php echo base_url();?>uploads/siakad1.png" width='180px' alt="" style="margin-left: 20px; margin-top: 20px;">
-                    </a>
-                     </ul>
-                    <!-- end: MAIN NAVIGATION MENU -->
-                </div>
-                <!-- end: SIDEBAR -->
+                <!-- start: PAGE TITLE & BREADCRUMB -->
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <ul class="nav navbar-nav navbar-right">                                            
+                            <li><a href="<?php echo base_url()?>auth">Login</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">                                            
+                            <li><a href="<?php echo base_url()?>galeri">Galeri</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">                                            
+                            <li><a href="<?php echo base_url()?>post_berita">Informasi</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">                                            
+                            <li><a href="<?php echo base_url()?>sekolah">Profil&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- end: PAGE TITLE & BREADCRUMB -->
             </div>
+        </div>
+        <!-- end: HEADER -->
+        <!-- start: MAIN CONTAINER -->
             <!-- start: PAGE -->
-            <div class="main-content">
-                <!-- start: PANEL CONFIGURATION MODAL FORM -->
-                <div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                    &times;
-                                </button>
-                                <h4 class="modal-title">Panel Configuration</h4>
-                            </div>
-                            <div class="modal-body">
-                                Here will be a configuration form
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                    Close
-                                </button>
-                                <button type="button" class="btn btn-primary">
-                                    Save changes
-                                </button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <!-- /.modal -->
-                <!-- end: SPANEL CONFIGURATION MODAL FORM -->
-                <div class="container">
-                    <!-- start: PAGE HEADER -->
+            <div class="container">
+                <nav class="navbar navbar-inverse">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <!-- start: PAGE TITLE & BREADCRUMB -->
-                            <nav class="navbar navbar-inverse">
-                                <div class="container-fluid">
-                                    <!-- Brand and toggle get grouped for better mobile display -->
-                                    <ul class="nav navbar-nav">        
-                                        <li><a href="<?php echo base_url()?>sekolah">profil sekolah</a></li>
-                                    </ul>
-                                    <ul class="nav navbar-nav">
-                                        <li><a href="<?php echo base_url()?>Post_berita/lists">informasi</a></li>
-                                    </ul>
-                                    <ul class="nav navbar-nav">
-                                        <li><a href="<?php echo base_url()?>galeri">galeri</a></li>
-                                    </ul>
-                                    <ul class="nav navbar-nav navbar-right">                                            
-                                        <li><a href="<?php echo base_url()?>auth">login</a></li>
-                                    </ul>
-                                </div><!-- /.container-fluid -->
-                            </nav>
-                            <!-- end: PAGE TITLE & BREADCRUMB -->
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <!-- start: PAGE CONTENT -->
+                        <?php echo $contents;?>
+                        <!-- end: PAGE -->
                         </div>
                     </div>
-                    <!-- end: PAGE HEADER -->
-                    <!-- start: PAGE CONTENT -->
-                    <?php echo $contents;?>
-                    <!-- end: PAGE -->
                 </div>
                 <!-- start: FOOTER -->
                 <div class="footer clearfix">
@@ -141,33 +100,7 @@
                     </div>
                 </div>
                 <!-- end: FOOTER -->
-                <!-- end: MAIN CONTAINER -->
-                <div id="event-management" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                    &times;
-                                </button>
-                                <h4 class="modal-title">Event Management</h4>
-                            </div>
-                            <div class="modal-body"></div>
-                            <div class="modal-footer">
-                                <button type="button" data-dismiss="modal" class="btn btn-light-grey">
-                                    Close
-                                </button>
-                                <button type="button" class="btn btn-danger remove-event no-display">
-                                    <i class='fa fa-trash-o'></i> Delete Event
-                                </button>
-                                <button type='submit' class='btn btn-success save-event'>
-                                    <i class='fa fa-check'></i> Save
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
         <!-- start: MAIN JAVASCRIPTS -->
         <!--[if lt IE 9]>
         <script src="<?php echo base_url();?>assets/plugins/respond.min.js"></script>

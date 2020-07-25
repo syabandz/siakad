@@ -1,13 +1,13 @@
 <?php
-class Post_berita extends CI_Controller{
+class post_berita extends CI_Controller{
 	function __construct(){
 		parent::__construct();
-		chekAksesModule();
+		// chekAksesModule();
 		$this->load->model('m_berita');
        
 	}
 	function index(){
-		 $this->template->load('template','Post_berita/v_post_news');
+		 $this->template->load('tampilan_utama','post_berita/v_post_news');
 	}
 
 	function simpan_post(){
