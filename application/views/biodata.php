@@ -1,3 +1,23 @@
+<!-- start: PAGE HEADER -->
+<div class="row">
+    <div class="col-sm-12">
+        <!-- start: PAGE TITLE & BREADCRUMB -->
+        <ol class="breadcrumb">
+            <li>
+                <i class="clip-home-3"></i>&nbsp;&nbsp;
+                <a href="<?php echo base_url()?>welcome">Dashboard</a>
+            </li>
+            <li class="active">
+                User Profil
+            </li>
+        </ol>
+        <div class="page-header">
+            <h2> User Profil </h2>
+        </div>
+        <!-- end: PAGE TITLE & BREADCRUMB -->
+    </div>
+</div>
+<!-- end: PAGE HEADER -->
 <div class="col-sm-12"><br>
     <!-- start: TEXT FIELDS PANEL -->
     <div class="panel panel-default">

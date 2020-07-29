@@ -29,6 +29,12 @@
         <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/theme_light.css" type="text/css" id="skin_color">
         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/print.css" type="text/css" media="print"/>
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/datatables.net-bs/css/dataTables.bootstrap.min.css" />
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" />
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" />
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/snapkit-validation/snapkit-validation.min.css" />
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/select2/dist/css/select2.min.css" />
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/Flot/examples/shared/jquery-ui/jquery-ui.css" />
         <!--[if IE 7]>
         <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
         <![endif]-->
@@ -136,44 +142,17 @@
             </div>
             <!-- start: PAGE -->
             <div class="main-content">
-                <!-- start: PANEL CONFIGURATION MODAL FORM -->
-                <div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                    &times;
-                                </button>
-                                <h4 class="modal-title">Panel Configuration</h4>
-                            </div>
-                            <div class="modal-body">
-                                Here will be a configuration form
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                    Close
-                                </button>
-                                <button type="button" class="btn btn-primary">
-                                    Save changes
-                                </button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <!-- /.modal -->
-                <!-- end: SPANEL CONFIGURATION MODAL FORM -->
+                <!-- start: MAIN CONTAINER -->
                 <div class="container">
                     <!-- start: PAGE CONTENT -->
                     <?php echo $contents;?>
-                    <!-- end: PAGE -->
+                    <!-- end: PAGE CONTENT -->
                 </div>
                 <!-- end: MAIN CONTAINER -->
                 <!-- start: FOOTER -->
                 <div class="footer clearfix">
                     <div class="footer-inner">
-                        2020 &copy; created by syabandz
+                        2020 &copy; created by windhiarmono
                     </div>
                     <div class="footer-items">
                         <span class="go-top"><i class="clip-chevron-up"></i></span>
@@ -181,7 +160,9 @@
                 </div>
                 <!-- end: FOOTER -->
             </div>
+            <!-- end: PAGE -->
         </div>
+
         <!-- start: MAIN JAVASCRIPTS -->
         <!--[if lt IE 9]>
         <script src="<?php echo base_url();?>assets/plugins/respond.min.js"></script>
@@ -190,9 +171,14 @@
         <!--[if gte IE 9]><!-->
         
         <!--<![endif]-->
-        <script src="<?php echo base_url();?>assets/jquery/jquery-2.2.3.min.js"></script>
+        <script src="<?php echo base_url();?>assets/jquery/dist/jquery.min.js"></script>
+        <script src="<?php echo base_url();?>assets/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="<?php echo base_url();?>assets/moment/moment.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url();?>assets/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="<?php echo base_url();?>assets/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="<?php echo base_url();?>assets/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/blockUI/jquery.blockUI.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/iCheck/jquery.icheck.min.js"></script>
@@ -212,66 +198,26 @@
         <script src="<?php echo base_url();?>assets/plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/fullcalendar/fullcalendar/fullcalendar.js"></script>
         <script src="<?php echo base_url();?>assets/js/index.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.0/jquery.dataTables.js"></script>
-        <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.js"></script>
+        <script src="<?php echo base_url();?>assets/snapkit-validation/snapkit-validation.min.js"></script>
+        <script src="<?php echo base_url();?>assets/select2/dist/js/select2.full.min.js"></script>
+        <script src="<?php echo base_url();?>assets/Scripts/jquery-ui-1.9.2.custom.min.js"></script>
         <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-        <script>
+        <script type="text/javascript">
             jQuery(document).ready(function() {
                 Main.init();
                 Index.init();
             });
+            $(function () {
+                // make a select2
+                $('.select2').select2()
+
+                //Date picker
+                $('.datepicker').datepicker({
+                    autoclose: true,
+                    dateFormat: "dd MM yy",
+                });
+            });
         </script>
-        <script type="text/javascript">
-    $(function() {
-        $( "#datepicker" ).datepicker({
-                changeMonth: true,
-                dateFormat: 'yy-mm-dd',
-                changeYear: true
-                });
-
-                $( "#datepicker1" ).datepicker({
-                changeMonth: true,
-                dateFormat: 'yy-mm-dd',
-                changeYear: true
-                });
-
-                $( "#datepicker2" ).datepicker({
-                changeMonth: true,
-                dateFormat: 'yy-mm-dd',
-                changeYear: true
-                });
-                $( "#datepicker3" ).datepicker({
-                changeMonth: true,
-                dateFormat: 'yy-mm-dd',
-                changeYear: true
-                });
-
-                $( "#datepicker4" ).datepicker({
-                changeMonth: true,
-                dateFormat: 'yy-mm-dd',
-                changeYear: true
-                });
-                
-                $( "#datepicker5" ).datepicker({
-                changeMonth: true,
-                dateFormat: 'yy-mm-dd',
-                changeYear: true
-                });
-                
-                $( "#datepicker6" ).datepicker({
-                changeMonth: true,
-                dateFormat: 'yy-mm-dd',
-                changeYear: true
-                });
-                
-                $( "#datepicker7" ).datepicker({
-                changeMonth: true,
-                dateFormat: 'yy-mm-dd',
-                changeYear: true
-                });
-    });
-    </script>
-        
     </body>
     <!-- end: BODY -->
 </html>

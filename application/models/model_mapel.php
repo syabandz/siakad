@@ -5,6 +5,14 @@ class Model_mapel extends CI_Model {
 
 	public $table="tbl_mapel";
 
+    // datatables
+    function json() {
+        $this->datatables->select('kd_mapel,nama_mapel');
+        $this->datatables->from('tbl_mapel');
+        $this->datatables->add_column('action', '<a href="mapel/edit/$1"><i class="fa fa-edit" title="update"></i></a><a href="mapel/delete/$1",<i class="fa fa-trash-o" title="delete"></i></a>', 'kd_mapel');
+        return $this->datatables->generate();
+    }
+
 	public function save()
 	{
 		$data = array(

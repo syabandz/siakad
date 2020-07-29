@@ -5,6 +5,14 @@ class Model_guru extends CI_Model {
 
 	public $table="tbl_guru";
 
+    // datatables
+    function json() {
+        $this->datatables->select('id_guru,nuptk,nama_guru,tempat_lahir,tanggal_lahir,gender');
+        $this->datatables->from('tbl_guru');
+        $this->datatables->add_column('action', '<a href="guru/edit/$1"><i class="fa fa-edit" title="update"></i></a><a href="guru/delete/$1",<i class="fa fa-trash-o" title="delete"></i></a>', 'id_guru');
+        return $this->datatables->generate();
+    }
+
 	public function save($foto)
 	{
 		$data = array(

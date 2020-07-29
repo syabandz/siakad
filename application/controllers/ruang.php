@@ -7,9 +7,15 @@ class Ruang extends CI_Controller {
             //chekAksesModule();
 			$this->load->library('ssp') ;
             $this->load->model('model_ruang');
+            $this->load->library('datatables');
 		}
 
-		function data() {
+        public function json() {
+            header('Content-Type: application/json');
+            echo $this->model_ruang->json();
+        }
+
+        function data() {
 			// nama tabel
         $table = 'tbl_ruangan';
         // nama PK

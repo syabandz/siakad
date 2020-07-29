@@ -11,9 +11,12 @@
                 Data Guru
             </li>
         </ol>
+        <div class="page-header">
+            <h2> Data Guru </h2>
+        </div>
         <!-- end: PAGE TITLE & BREADCRUMB -->
     </div>
-</div><br>
+</div>
 <!-- end: PAGE HEADER -->
 <div class="col-md-12">
     <!-- start: DYNAMIC TABLE PANEL -->
@@ -31,7 +34,7 @@
         </div>
         <div class="panel-body">
             <?php echo anchor('guru/add','Tambah data',array('class'=>'btn btn-success btn-sm'))?><br /><br />
-            <table id="sample_1" class="table table-striped table-bordered table-hover table-full-width dataTable"  aria-describedby="sample_1_info">
+            <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable"  aria-describedby="sample_1_info">
                 <thead>
                     <tr>
                         <th>NO</th>
@@ -40,48 +43,67 @@
                         <th>TEMPAT LAHIR</th>
                         <th>TANGGAL LAHIR</th>
                         <th>GENDER</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
            </table>
         </div>
     </div>
 </div> 
-<script src="<?php echo base_url();?>assets/jquery/jquery-2.2.3.min.js"></script>
-<script>
-    $(document).ready(function() {
-        var t = $('#sample_1').DataTable( {
-            "ajax": '<?php echo site_url('guru/data'); ?>',
-            "order": [[ 2, 'asc' ]],
-            "columns": [
-                {
-                    "data": null,
-                    "width": "50px",
-                    "sClass": "text-center",
-                    "orderable": false,
-                }, 
+<script src="<?php echo base_url();?>assets/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
+    {
+        return {
+            "iStart": oSettings._iDisplayStart,
+            "iEnd": oSettings.fnDisplayEnd(),
+            "iLength": oSettings._iDisplayLength,
+            "iTotal": oSettings.fnRecordsTotal(),
+            "iFilteredTotal": oSettings.fnRecordsDisplay(),
+            "iPage": Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
+            "iTotalPages": Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
+        };
+    };
 
-                {   "data": "nuptk",
-                    "width": "100px",
-                    "sClass":"text-center"
-                },
-
-                {   "data": "nama_guru" },
-                {   "data": "tempat_lahir" },
-                {   "data": "tanggal_lahir" },
-
-
-                {   "data": "gender","width": "180px"},
-
-                {   "data": "aksi",
-                    "width": "180px",
-                    "sClass": "text-center" }
-            ]
-        } );
-            
-        t.on( 'order.dt search.dt', function () {
-            t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                cell.innerHTML = i+1;
-            } );
-        } ).draw();
-    } );
+    var t = $("#mytable").dataTable({
+        fixedHeader: { header: true },
+        "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+        initComplete: function() {
+            var api = this.api();
+            $('#mytable_filter input')
+                    .off('.DT')
+                    .on('keyup.DT', function(e) {
+                        if (e.keyCode == 13) {
+                            api.search(this.value).draw();
+                }
+            });
+        },
+        oLanguage: {
+            sProcessing: "loading..."
+        },
+        processing: true,
+        serverSide: true,
+        ajax: {"url": "guru/json", "type": "POST"},
+        columns: [
+            {
+                "data": "id_guru",
+                "orderable": false
+            },{"data": "nuptk"},{"data": "nama_guru"},{"data": "tempat_lahir"},{"data": "tanggal_lahir"},{"data": "gender"},
+            {
+                "data" : "action",
+                "orderable": false,
+                "className" : "text-center"
+            }
+        ],
+        order: [[0, 'desc']],
+        rowCallback: function(row, data, iDisplayIndex) {
+            var info = this.fnPagingInfo();
+            var page = info.iPage;
+            var length = info.iLength;
+            var index = page * length + (iDisplayIndex + 1);
+            $('td:eq(0)', row).html(index);
+        }
+    });
+});
 </script>

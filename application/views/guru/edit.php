@@ -1,26 +1,39 @@
+<!-- start: PAGE HEADER -->
+<div class="row">
+    <div class="col-sm-12">
+        <!-- start: PAGE TITLE & BREADCRUMB -->
+        <ol class="breadcrumb">
+            <li>
+                <i class="clip-home-3"></i>&nbsp;&nbsp;
+                <a href="<?php echo base_url()?>welcome">Dashboard</a>
+            </li>
+            <li>
+                <a href="<?php echo base_url()?>guru">Data Guru</a>
+            </li>
+            <li class="active">
+                Ubah Data Guru
+            </li>
+        </ol>
+        <div class="page-header">
+            <h2> Data Guru </h2>
+        </div>
+        <!-- end: PAGE TITLE & BREADCRUMB -->
+    </div>
+</div>
+<!-- end: PAGE HEADER -->
 <div class="col-sm-12">
                         <!-- start: TEXT FIELDS PANEL -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <i class="fa fa-external-link-square"></i> Text Fields
-                                <div class="panel-tools">
-                                    <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
-                                    </a>
-                                    <a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
-                                        <i class="fa fa-wrench"></i>
-                                    </a>
-                                    <a class="btn btn-xs btn-link panel-refresh" href="#">
-                                        <i class="fa fa-refresh"></i>
-                                    </a>
-                                    <a class="btn btn-xs btn-link panel-expand" href="#">
-                                        <i class="fa fa-resize-full"></i>
-                                    </a>
-                                    <a class="btn btn-xs btn-link panel-close" href="#">
-                                        <i class="fa fa-times"></i>
-                                    </a>
-
-                                </div>
-                            </div>
+                        <div class="panel-heading">
+            <i class="fa fa-external-link-square"></i> Ubah Data Guru
+            <div class="panel-tools">
+                <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+                </a>
+                <a class="btn btn-xs btn-link panel-close" href="#">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
                             <div class="panel-body">
                          
                                 <?php

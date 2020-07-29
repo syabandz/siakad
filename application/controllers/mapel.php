@@ -7,9 +7,15 @@ class Mapel extends CI_Controller {
 
 			$this->load->library('ssp') ;
             $this->load->model('model_mapel');
+            $this->load->library('datatables');
 		}
 
-		function data() {
+        public function json() {
+            header('Content-Type: application/json');
+            echo $this->model_mapel->json();
+        }
+    
+        function data() {
 			// nama tabel
         $table = 'tbl_mapel';
         // nama PK

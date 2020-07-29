@@ -5,6 +5,14 @@ class Model_ruang extends CI_Model {
 
 	public $table="tbl_ruangan";
 
+    // datatables
+    function json() {
+        $this->datatables->select('kd_ruang,nama_ruang');
+        $this->datatables->from('tbl_ruangan');
+        $this->datatables->add_column('action', '<a href="ruang/edit/$1"><i class="fa fa-edit" title="update"></i></a><a href="ruang/delete/$1",<i class="fa fa-trash-o" title="delete"></i></a>', 'kd_ruang');
+        return $this->datatables->generate();
+    }
+
 	public function save()
 	{
 		$data = array(

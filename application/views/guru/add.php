@@ -14,9 +14,12 @@
                 Tambah Data Guru
             </li>
         </ol>
+        <div class="page-header">
+            <h2> Data Guru </h2>
+        </div>
         <!-- end: PAGE TITLE & BREADCRUMB -->
     </div>
-</div><br>
+</div>
 <!-- end: PAGE HEADER -->
 <div class="col-sm-12">
     <!-- start: TEXT FIELDS PANEL -->
@@ -59,7 +62,7 @@
                         <input type="text" name="tempat_lahir" placeholder="TEMPAT LAHIR" id="tempat_lahir" class="form-control" type="text">
                     </div>
                         <div class="col-sm-3">
-                        <input type="text" name="tanggal_lahir" placeholder="TANGGAL LAHIR" id="datepicker" class="form-control" >
+                        <input type="text" name="tanggal_lahir" placeholder="TANGGAL LAHIR" id="datepicker" class="form-control datepicker" >
                     </div>
                 </div>
                 <div class="form-group">
