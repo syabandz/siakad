@@ -1,20 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
--- http://www.phpmyadmin.net
+-- version 4.8.4
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 10, 2017 at 05:49 PM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Host: 127.0.0.1:3306
+-- Generation Time: Aug 02, 2020 at 12:20 PM
+-- Server version: 5.7.24
+-- PHP Version: 7.1.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `siakad`
@@ -26,6 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `profil_sekolah`
 --
 
+DROP TABLE IF EXISTS `profil_sekolah`;
 CREATE TABLE IF NOT EXISTS `profil_sekolah` (
   `id_sekolah` int(11) NOT NULL,
   `nama_sekolah` varchar(30) NOT NULL,
@@ -59,13 +62,14 @@ INSERT INTO `profil_sekolah` (`id_sekolah`, `nama_sekolah`, `nama_kepsek`, `kuri
 -- Table structure for table `tabel_menu`
 --
 
+DROP TABLE IF EXISTS `tabel_menu`;
 CREATE TABLE IF NOT EXISTS `tabel_menu` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nama_menu` varchar(30) NOT NULL,
   `link` varchar(40) NOT NULL,
   `icon` varchar(30) NOT NULL,
   `is_main_menu` int(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_menu`
@@ -73,30 +77,30 @@ CREATE TABLE IF NOT EXISTS `tabel_menu` (
 
 INSERT INTO `tabel_menu` (`id`, `nama_menu`, `link`, `icon`, `is_main_menu`) VALUES
 (1, 'DATABASE SISWA', '#', 'clip-database', 0),
-(2, 'DATABASE GURU', '#', 'clip-study', 0),
-(3, 'DATA SISWA', 'siswa', 'fa fa-user', 1),
-(5, 'DATA GURU', 'guru', 'fa fa-graduation-cap		', 2),
+(2, 'DATA USER', '#', 'fa fa-group', 0),
+(3, 'DATA SISWA', 'siswa', 'fa fa-male', 2),
+(5, 'DATA GURU', 'guru', 'fa fa-user', 2),
 (7, 'DATA SEKOLAH', 'sekolah', 'fa fa-desktop', 0),
-(8, 'DATA MASTER', '#', 'clip-grid-5', 0),
-(9, 'MATA PELAJARAN', 'mapel', 'clip-grid-5', 8),
+(8, 'DATA MASTER', '#', 'fa fa-list-alt', 0),
+(9, 'MATA PELAJARAN', 'mapel', 'fa fa-file-text-o', 8),
 (10, ' RUANGAN KELAS', 'ruang', 'clip-home', 8),
 (11, 'TAHUN AKADEMIK', 'tahun_akademik', 'clip-calendar', 8),
 (12, 'KURIKULUM', 'kurikulum', 'clip-globe', 8),
 (13, 'JADWAL PELAJARAN', 'jadwal', 'fa fa-calendar-o', 0),
-(14, 'JURUSAN', 'jurusan', 'clip-star-6', 8),
-(15, 'ROMBEL', 'rombel', 'fa fa-group', 8),
-(16, 'PERSERTA DIDIK', 'siswa/siswa_aktif', 'fa fa-group', 0),
-(17, 'WALI KELAS', 'walikelas', 'fa fa-male', 0),
-(18, 'PENGGUNA SISTEM', 'users', 'clip-users', 0),
+(14, 'JURUSAN', 'jurusan', 'fa fa-book', 8),
+(15, 'ROMBEL', 'rombel', 'fa fa-rss', 8),
+(16, 'PERSERTA DIDIK', 'siswa/siswa_aktif', 'fa fa-laptop', 0),
+(17, 'WALI KELAS', 'walikelas', 'fa fa-sitemap', 0),
+(18, 'PENGGUNA SISTEM', 'users', 'clip-users', 2),
 (20, 'FORM PEMBAYARAN', 'keuangan/form', 'fa fa-money', 0),
-(21, 'LAPORAN NILAI', 'nilai', ' clip-file', 0),
+(21, 'LAPORAN NILAI', 'nilai', 'clip-database', 0),
 (23, ' RAPORT ONLINE', 'raport', 'clip-star-3', 0),
 (24, 'JENIS PEMBAYARAN', 'jenis_pembayaran', 'fa fa-money', 0),
 (25, 'SETUP BIAYA', 'keuangan/setup', 'fa fa-money', 0),
 (26, 'LAPORAN', 'keuangan', 'fa fa-money', 0),
 (27, 'BIODATA', 'biodata', 'fa fa-male', 0),
-(28, 'LIHAT NILAI', 'lihat_nilai', 'fa fa-eye', 0),
-(29, 'pengumuman', 'Post_berita', 'clip-pencil', 0),
+(28, 'LIHAT NILAI', 'lihat_nilai', 'clip-database', 0),
+(29, 'pengumuman', 'Post_berita', 'fa fa-bullhorn', 0),
 (31, 'ganti password', 'ganti_password', 'fa fa-key', 0),
 (32, 'cek pembayaran', 'cek_bayar', 'fa fa-money', 0),
 (33, 'absensi', 'absensi/add', 'clip-pencil', 0);
@@ -107,6 +111,7 @@ INSERT INTO `tabel_menu` (`id`, `nama_menu`, `link`, `icon`, `is_main_menu`) VAL
 -- Table structure for table `tabel_sekolah`
 --
 
+DROP TABLE IF EXISTS `tabel_sekolah`;
 CREATE TABLE IF NOT EXISTS `tabel_sekolah` (
   `id_sekolah` int(11) NOT NULL,
   `nama_sekolah` varchar(30) NOT NULL,
@@ -129,13 +134,14 @@ INSERT INTO `tabel_sekolah` (`id_sekolah`, `nama_sekolah`, `id_jenjang_sekolah`,
 -- Table structure for table `tbl_absen`
 --
 
+DROP TABLE IF EXISTS `tbl_absen`;
 CREATE TABLE IF NOT EXISTS `tbl_absen` (
-`id_absen` int(11) NOT NULL,
+  `id_absen` int(11) NOT NULL,
   `nis` int(15) NOT NULL,
   `nama` varchar(20) NOT NULL,
   `tanggal` varchar(15) NOT NULL,
   `absen` enum('H','A','I','S','T') NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_absen`
@@ -151,10 +157,11 @@ INSERT INTO `tbl_absen` (`id_absen`, `nis`, `nama`, `tanggal`, `absen`) VALUES
 -- Table structure for table `tbl_agama`
 --
 
+DROP TABLE IF EXISTS `tbl_agama`;
 CREATE TABLE IF NOT EXISTS `tbl_agama` (
-`kd_agama` int(11) NOT NULL,
+  `kd_agama` int(11) NOT NULL,
   `nama_agama` varchar(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_agama`
@@ -174,12 +181,13 @@ INSERT INTO `tbl_agama` (`kd_agama`, `nama_agama`) VALUES
 -- Table structure for table `tbl_berita`
 --
 
+DROP TABLE IF EXISTS `tbl_berita`;
 CREATE TABLE IF NOT EXISTS `tbl_berita` (
-`berita_id` int(11) NOT NULL,
+  `berita_id` int(11) NOT NULL,
   `berita_judul` varchar(40) NOT NULL,
   `berita_isi` text NOT NULL,
   `berita_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_berita`
@@ -194,12 +202,13 @@ INSERT INTO `tbl_berita` (`berita_id`, `berita_judul`, `berita_isi`, `berita_tan
 -- Table structure for table `tbl_biaya_sekolah`
 --
 
+DROP TABLE IF EXISTS `tbl_biaya_sekolah`;
 CREATE TABLE IF NOT EXISTS `tbl_biaya_sekolah` (
-`id_biaya` int(11) NOT NULL,
+  `id_biaya` int(11) NOT NULL,
   `id_jenis_pembayaran` int(11) NOT NULL,
   `id_tahun_akademik` int(11) NOT NULL,
   `jumlah_biaya` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_biaya_sekolah`
@@ -220,8 +229,9 @@ INSERT INTO `tbl_biaya_sekolah` (`id_biaya`, `id_jenis_pembayaran`, `id_tahun_ak
 -- Table structure for table `tbl_guru`
 --
 
+DROP TABLE IF EXISTS `tbl_guru`;
 CREATE TABLE IF NOT EXISTS `tbl_guru` (
-`id_guru` int(11) NOT NULL,
+  `id_guru` int(11) NOT NULL,
   `nuptk` varchar(30) NOT NULL,
   `nama_guru` varchar(40) NOT NULL,
   `tempat_lahir` varchar(30) NOT NULL,
@@ -230,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `tbl_guru` (
   `username` varchar(30) NOT NULL,
   `password` varchar(32) NOT NULL,
   `foto` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_guru`
@@ -255,12 +265,13 @@ INSERT INTO `tbl_guru` (`id_guru`, `nuptk`, `nama_guru`, `tempat_lahir`, `tangga
 -- Table structure for table `tbl_history_kelas`
 --
 
+DROP TABLE IF EXISTS `tbl_history_kelas`;
 CREATE TABLE IF NOT EXISTS `tbl_history_kelas` (
-`id_history` int(11) NOT NULL,
+  `id_history` int(11) NOT NULL,
   `id_rombel` int(11) NOT NULL,
   `nis` varchar(11) NOT NULL,
   `id_tahun_akademik` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_history_kelas`
@@ -291,8 +302,9 @@ INSERT INTO `tbl_history_kelas` (`id_history`, `id_rombel`, `nis`, `id_tahun_aka
 -- Table structure for table `tbl_jadwal`
 --
 
+DROP TABLE IF EXISTS `tbl_jadwal`;
 CREATE TABLE IF NOT EXISTS `tbl_jadwal` (
-`id_jadwal` int(11) NOT NULL,
+  `id_jadwal` int(11) NOT NULL,
   `id_tahun_akademik` int(11) NOT NULL,
   `kd_jurusan` varchar(6) NOT NULL,
   `kd_mapel` varchar(4) NOT NULL,
@@ -303,7 +315,7 @@ CREATE TABLE IF NOT EXISTS `tbl_jadwal` (
   `hari` varchar(10) NOT NULL,
   `id_rombel` int(11) NOT NULL,
   `kelas` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_jadwal`
@@ -327,10 +339,11 @@ INSERT INTO `tbl_jadwal` (`id_jadwal`, `id_tahun_akademik`, `kd_jurusan`, `kd_ma
 -- Table structure for table `tbl_jenis_pembayaran`
 --
 
+DROP TABLE IF EXISTS `tbl_jenis_pembayaran`;
 CREATE TABLE IF NOT EXISTS `tbl_jenis_pembayaran` (
-`id_jenis_pembayaran` int(11) NOT NULL,
+  `id_jenis_pembayaran` int(11) NOT NULL,
   `nama_jenis_pembayaran` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_jenis_pembayaran`
@@ -351,11 +364,12 @@ INSERT INTO `tbl_jenis_pembayaran` (`id_jenis_pembayaran`, `nama_jenis_pembayara
 -- Table structure for table `tbl_jenjang_sekolah`
 --
 
+DROP TABLE IF EXISTS `tbl_jenjang_sekolah`;
 CREATE TABLE IF NOT EXISTS `tbl_jenjang_sekolah` (
-`id_jenjang` int(11) NOT NULL,
+  `id_jenjang` int(11) NOT NULL,
   `nama_jenjang` varchar(10) NOT NULL,
   `jumlah_kelas` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_jenjang_sekolah`
@@ -372,6 +386,7 @@ INSERT INTO `tbl_jenjang_sekolah` (`id_jenjang`, `nama_jenjang`, `jumlah_kelas`)
 -- Table structure for table `tbl_jurusan`
 --
 
+DROP TABLE IF EXISTS `tbl_jurusan`;
 CREATE TABLE IF NOT EXISTS `tbl_jurusan` (
   `kd_jurusan` varchar(4) NOT NULL,
   `nama_jurusan` varchar(30) NOT NULL
@@ -392,11 +407,12 @@ INSERT INTO `tbl_jurusan` (`kd_jurusan`, `nama_jurusan`) VALUES
 -- Table structure for table `tbl_kurikulum`
 --
 
+DROP TABLE IF EXISTS `tbl_kurikulum`;
 CREATE TABLE IF NOT EXISTS `tbl_kurikulum` (
-`id_kurikulum` int(11) NOT NULL,
+  `id_kurikulum` int(11) NOT NULL,
   `nama_kurikulum` varchar(50) NOT NULL,
   `is_aktif` enum('y','n','','') NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_kurikulum`
@@ -412,13 +428,14 @@ INSERT INTO `tbl_kurikulum` (`id_kurikulum`, `nama_kurikulum`, `is_aktif`) VALUE
 -- Table structure for table `tbl_kurikulum_detail`
 --
 
+DROP TABLE IF EXISTS `tbl_kurikulum_detail`;
 CREATE TABLE IF NOT EXISTS `tbl_kurikulum_detail` (
-`id_kurikulum_detail` int(11) NOT NULL,
+  `id_kurikulum_detail` int(11) NOT NULL,
   `id_kurikulum` int(11) NOT NULL,
   `kd_mapel` varchar(11) NOT NULL,
   `kd_jurusan` varchar(4) NOT NULL,
   `kelas` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_kurikulum_detail`
@@ -442,10 +459,11 @@ INSERT INTO `tbl_kurikulum_detail` (`id_kurikulum_detail`, `id_kurikulum`, `kd_m
 -- Table structure for table `tbl_level_user`
 --
 
+DROP TABLE IF EXISTS `tbl_level_user`;
 CREATE TABLE IF NOT EXISTS `tbl_level_user` (
-`id_level_user` int(11) NOT NULL,
+  `id_level_user` int(11) NOT NULL,
   `nama_level` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_level_user`
@@ -464,6 +482,7 @@ INSERT INTO `tbl_level_user` (`id_level_user`, `nama_level`) VALUES
 -- Table structure for table `tbl_mapel`
 --
 
+DROP TABLE IF EXISTS `tbl_mapel`;
 CREATE TABLE IF NOT EXISTS `tbl_mapel` (
   `kd_mapel` varchar(12) NOT NULL,
   `nama_mapel` varchar(50) NOT NULL
@@ -503,12 +522,13 @@ INSERT INTO `tbl_mapel` (`kd_mapel`, `nama_mapel`) VALUES
 -- Table structure for table `tbl_nilai`
 --
 
+DROP TABLE IF EXISTS `tbl_nilai`;
 CREATE TABLE IF NOT EXISTS `tbl_nilai` (
-`id_nilai` int(11) NOT NULL,
+  `id_nilai` int(11) NOT NULL,
   `id_jadwal` int(11) NOT NULL,
   `nis` varchar(11) NOT NULL,
   `nilai` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_nilai`
@@ -529,14 +549,15 @@ INSERT INTO `tbl_nilai` (`id_nilai`, `id_jadwal`, `nis`, `nilai`) VALUES
 -- Table structure for table `tbl_pembayaran`
 --
 
+DROP TABLE IF EXISTS `tbl_pembayaran`;
 CREATE TABLE IF NOT EXISTS `tbl_pembayaran` (
-`id_pembayaran` int(11) NOT NULL,
+  `id_pembayaran` int(11) NOT NULL,
   `tanggal` varchar(15) NOT NULL,
   `nis` varchar(13) NOT NULL,
   `id_jenis_pembayaran` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL,
   `keterangan` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_pembayaran`
@@ -559,12 +580,13 @@ INSERT INTO `tbl_pembayaran` (`id_pembayaran`, `tanggal`, `nis`, `id_jenis_pemba
 -- Table structure for table `tbl_rombel`
 --
 
+DROP TABLE IF EXISTS `tbl_rombel`;
 CREATE TABLE IF NOT EXISTS `tbl_rombel` (
-`id_rombel` int(11) NOT NULL,
+  `id_rombel` int(11) NOT NULL,
   `nama_rombel` varchar(20) NOT NULL,
   `kelas` int(11) NOT NULL,
   `kd_jurusan` varchar(4) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_rombel`
@@ -588,6 +610,7 @@ INSERT INTO `tbl_rombel` (`id_rombel`, `nama_rombel`, `kelas`, `kd_jurusan`) VAL
 -- Table structure for table `tbl_ruangan`
 --
 
+DROP TABLE IF EXISTS `tbl_ruangan`;
 CREATE TABLE IF NOT EXISTS `tbl_ruangan` (
   `kd_ruang` varchar(10) NOT NULL,
   `nama_ruang` varchar(30) NOT NULL
@@ -614,10 +637,11 @@ INSERT INTO `tbl_ruangan` (`kd_ruang`, `nama_ruang`) VALUES
 -- Table structure for table `tbl_semester`
 --
 
+DROP TABLE IF EXISTS `tbl_semester`;
 CREATE TABLE IF NOT EXISTS `tbl_semester` (
-`id_semester` int(11) NOT NULL,
+  `id_semester` int(11) NOT NULL,
   `semester` varchar(12) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_semester`
@@ -635,6 +659,7 @@ INSERT INTO `tbl_semester` (`id_semester`, `semester`) VALUES
 -- Table structure for table `tbl_siswa`
 --
 
+DROP TABLE IF EXISTS `tbl_siswa`;
 CREATE TABLE IF NOT EXISTS `tbl_siswa` (
   `nis` varchar(11) NOT NULL,
   `nama` varchar(40) NOT NULL,
@@ -677,12 +702,13 @@ INSERT INTO `tbl_siswa` (`nis`, `nama`, `tanggal_lahir`, `tempat_lahir`, `gender
 -- Table structure for table `tbl_tahun_akademik`
 --
 
+DROP TABLE IF EXISTS `tbl_tahun_akademik`;
 CREATE TABLE IF NOT EXISTS `tbl_tahun_akademik` (
-`id_tahun_akademik` int(4) NOT NULL,
+  `id_tahun_akademik` int(4) NOT NULL,
   `tahun_akademik` varchar(10) NOT NULL,
   `is_aktif` enum('y','n','','') NOT NULL,
   `semester_aktif` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_tahun_akademik`
@@ -697,8 +723,9 @@ INSERT INTO `tbl_tahun_akademik` (`id_tahun_akademik`, `tahun_akademik`, `is_akt
 -- Table structure for table `tbl_user`
 --
 
+DROP TABLE IF EXISTS `tbl_user`;
 CREATE TABLE IF NOT EXISTS `tbl_user` (
-`id_user` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `no_identitas` int(20) NOT NULL,
   `nama_lengkap` varchar(40) NOT NULL,
   `tempat_lahir` varchar(30) NOT NULL,
@@ -712,7 +739,7 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
   `password` varchar(40) NOT NULL,
   `id_level_user` int(11) NOT NULL,
   `foto` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_user`
@@ -734,11 +761,12 @@ INSERT INTO `tbl_user` (`id_user`, `no_identitas`, `nama_lengkap`, `tempat_lahir
 -- Table structure for table `tbl_user_rule`
 --
 
+DROP TABLE IF EXISTS `tbl_user_rule`;
 CREATE TABLE IF NOT EXISTS `tbl_user_rule` (
-`id_rule` int(11) NOT NULL,
+  `id_rule` int(11) NOT NULL,
   `id_menu` int(11) NOT NULL,
   `id_level_user` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_user_rule`
@@ -789,12 +817,13 @@ INSERT INTO `tbl_user_rule` (`id_rule`, `id_menu`, `id_level_user`) VALUES
 -- Table structure for table `tbl_walikelas`
 --
 
+DROP TABLE IF EXISTS `tbl_walikelas`;
 CREATE TABLE IF NOT EXISTS `tbl_walikelas` (
-`id_walikelas` int(11) NOT NULL,
+  `id_walikelas` int(11) NOT NULL,
   `id_guru` int(11) NOT NULL,
   `id_tahun_akademik` int(11) NOT NULL,
   `id_rombel` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_walikelas`
@@ -815,442 +844,19 @@ INSERT INTO `tbl_walikelas` (`id_walikelas`, `id_guru`, `id_tahun_akademik`, `id
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `v_jumlah_nilai`
+-- Table structure for table `v_master_rombel`
 --
-CREATE TABLE IF NOT EXISTS `v_jumlah_nilai` (
-);
--- --------------------------------------------------------
 
---
--- Stand-in structure for view `v_master_rombel`
---
-CREATE TABLE IF NOT EXISTS `v_master_rombel` (
-`id_rombel` int(11)
-,`nama_rombel` varchar(20)
-,`kelas` int(11)
-,`kd_jurusan` varchar(4)
-,`nama_jurusan` varchar(30)
-);
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `v_nilai`
---
-CREATE TABLE IF NOT EXISTS `v_nilai` (
-`nis` varchar(11)
-,`nama_mapel` varchar(50)
-,`nilai` int(11)
-);
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `v_siswa`
---
-CREATE TABLE IF NOT EXISTS `v_siswa` (
-`nis` varchar(11)
-,`nama` varchar(40)
-,`tanggal_lahir` date
-,`tempat_lahir` varchar(30)
-,`gender` enum('P','L','','')
-,`kd_agama` varchar(2)
-,`foto` text
-,`id_rombel` int(11)
-,`nama_ibu` varchar(40)
-,`nama_ayah` varchar(40)
-,`alamat` text
-,`sekolah_asal` varchar(50)
-,`username` varchar(40)
-,`password` varchar(40)
-,`nama_rombel` varchar(20)
-);
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `v_tbl_user`
---
-CREATE TABLE IF NOT EXISTS `v_tbl_user` (
-`id_user` int(11)
-,`nama_lengkap` varchar(40)
-,`username` varchar(50)
-,`password` varchar(40)
-,`id_level_user` int(11)
-,`foto` text
-,`nama_level` varchar(50)
-);
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `v_tbl_user_new`
---
-CREATE TABLE IF NOT EXISTS `v_tbl_user_new` (
-`id_user` int(11)
-,`no_identitas` int(20)
-,`nama_lengkap` varchar(40)
-,`tempat_lahir` varchar(30)
-,`tanggal_lahir` date
-,`gender` enum('Laki-laki','Wanita','','')
-,`kd_agama` enum('Islam','Kristen','Khatolik','Hindu','Budha','Lain-lain')
-,`alamat` text
-,`no_hp` int(15)
-,`email` varchar(30)
-,`username` varchar(50)
-,`password` varchar(40)
-,`id_level_user` int(11)
-,`foto` text
-,`nama_level` varchar(50)
-,`nama_agama` varchar(30)
-);
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `v_walikelas`
---
-CREATE TABLE IF NOT EXISTS `v_walikelas` (
-`nama_guru` varchar(40)
-,`nama_rombel` varchar(20)
-,`id_walikelas` int(11)
-,`id_tahun_akademik` int(11)
-,`nama_jurusan` varchar(30)
-,`kelas` int(11)
-,`tahun_akademik` varchar(10)
-);
--- --------------------------------------------------------
-
---
--- Structure for view `v_jumlah_nilai`
---
-DROP TABLE IF EXISTS `v_jumlah_nilai`;
--- in use(#1356 - View 'siakad.v_jumlah_nilai' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them)
-
--- --------------------------------------------------------
-
---
--- Structure for view `v_master_rombel`
---
 DROP TABLE IF EXISTS `v_master_rombel`;
+CREATE TABLE IF NOT EXISTS `v_master_rombel` (
+  `id_rombel` int(11) DEFAULT NULL,
+  `nama_rombel` varchar(20) DEFAULT NULL,
+  `kelas` int(11) DEFAULT NULL,
+  `kd_jurusan` varchar(4) DEFAULT NULL,
+  `nama_jurusan` varchar(30) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+COMMIT;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_master_rombel` AS select `tr`.`id_rombel` AS `id_rombel`,`tr`.`nama_rombel` AS `nama_rombel`,`tr`.`kelas` AS `kelas`,`tr`.`kd_jurusan` AS `kd_jurusan`,`tj`.`nama_jurusan` AS `nama_jurusan` from (`tbl_rombel` `tr` join `tbl_jurusan` `tj`) where (`tj`.`kd_jurusan` = `tr`.`kd_jurusan`);
-
--- --------------------------------------------------------
-
---
--- Structure for view `v_nilai`
---
-DROP TABLE IF EXISTS `v_nilai`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_nilai` AS select `ts`.`nis` AS `nis`,`tm`.`nama_mapel` AS `nama_mapel`,`tn`.`nilai` AS `nilai` from (((`tbl_nilai` `tn` join `tbl_jadwal` `tj`) join `tbl_siswa` `ts`) join `tbl_mapel` `tm`) where ((`tn`.`id_jadwal` = `tj`.`id_jadwal`) and (`tn`.`nis` = `ts`.`nis`) and (`tj`.`kd_mapel` = `tm`.`kd_mapel`));
-
--- --------------------------------------------------------
-
---
--- Structure for view `v_siswa`
---
-DROP TABLE IF EXISTS `v_siswa`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_siswa` AS select `ts`.`nis` AS `nis`,`ts`.`nama` AS `nama`,`ts`.`tanggal_lahir` AS `tanggal_lahir`,`ts`.`tempat_lahir` AS `tempat_lahir`,`ts`.`gender` AS `gender`,`ts`.`kd_agama` AS `kd_agama`,`ts`.`foto` AS `foto`,`ts`.`id_rombel` AS `id_rombel`,`ts`.`nama_ibu` AS `nama_ibu`,`ts`.`nama_ayah` AS `nama_ayah`,`ts`.`alamat` AS `alamat`,`ts`.`sekolah_asal` AS `sekolah_asal`,`ts`.`username` AS `username`,`ts`.`password` AS `password`,`tr`.`nama_rombel` AS `nama_rombel` from (`tbl_siswa` `ts` join `tbl_rombel` `tr`) where (`ts`.`id_rombel` = `tr`.`id_rombel`);
-
--- --------------------------------------------------------
-
---
--- Structure for view `v_tbl_user`
---
-DROP TABLE IF EXISTS `v_tbl_user`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_tbl_user` AS select `tu`.`id_user` AS `id_user`,`tu`.`nama_lengkap` AS `nama_lengkap`,`tu`.`username` AS `username`,`tu`.`password` AS `password`,`tu`.`id_level_user` AS `id_level_user`,`tu`.`foto` AS `foto`,`tlu`.`nama_level` AS `nama_level` from (`tbl_user` `tu` join `tbl_level_user` `tlu`) where (`tu`.`id_level_user` = `tlu`.`id_level_user`);
-
--- --------------------------------------------------------
-
---
--- Structure for view `v_tbl_user_new`
---
-DROP TABLE IF EXISTS `v_tbl_user_new`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_tbl_user_new` AS select `tu`.`id_user` AS `id_user`,`tu`.`no_identitas` AS `no_identitas`,`tu`.`nama_lengkap` AS `nama_lengkap`,`tu`.`tempat_lahir` AS `tempat_lahir`,`tu`.`tanggal_lahir` AS `tanggal_lahir`,`tu`.`gender` AS `gender`,`tu`.`kd_agama` AS `kd_agama`,`tu`.`alamat` AS `alamat`,`tu`.`no_hp` AS `no_hp`,`tu`.`email` AS `email`,`tu`.`username` AS `username`,`tu`.`password` AS `password`,`tu`.`id_level_user` AS `id_level_user`,`tu`.`foto` AS `foto`,`tlu`.`nama_level` AS `nama_level`,`ta`.`nama_agama` AS `nama_agama` from ((`tbl_user` `tu` join `tbl_level_user` `tlu`) join `tbl_agama` `ta`) where ((`tu`.`id_level_user` = `tlu`.`id_level_user`) and (`tu`.`kd_agama` = `ta`.`kd_agama`));
-
--- --------------------------------------------------------
-
---
--- Structure for view `v_walikelas`
---
-DROP TABLE IF EXISTS `v_walikelas`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_walikelas` AS select `g`.`nama_guru` AS `nama_guru`,`r`.`nama_rombel` AS `nama_rombel`,`w`.`id_walikelas` AS `id_walikelas`,`w`.`id_tahun_akademik` AS `id_tahun_akademik`,`j`.`nama_jurusan` AS `nama_jurusan`,`r`.`kelas` AS `kelas`,`ta`.`tahun_akademik` AS `tahun_akademik` from ((((`tbl_walikelas` `w` join `tbl_rombel` `r`) join `tbl_guru` `g`) join `tbl_jurusan` `j`) join `tbl_tahun_akademik` `ta`) where ((`w`.`id_guru` = `g`.`id_guru`) and (`w`.`id_rombel` = `r`.`id_rombel`) and (`j`.`kd_jurusan` = `r`.`kd_jurusan`) and (`ta`.`id_tahun_akademik` = `w`.`id_tahun_akademik`));
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `profil_sekolah`
---
-ALTER TABLE `profil_sekolah`
- ADD PRIMARY KEY (`id_sekolah`);
-
---
--- Indexes for table `tabel_menu`
---
-ALTER TABLE `tabel_menu`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tabel_sekolah`
---
-ALTER TABLE `tabel_sekolah`
- ADD PRIMARY KEY (`id_sekolah`);
-
---
--- Indexes for table `tbl_absen`
---
-ALTER TABLE `tbl_absen`
- ADD PRIMARY KEY (`id_absen`);
-
---
--- Indexes for table `tbl_agama`
---
-ALTER TABLE `tbl_agama`
- ADD PRIMARY KEY (`kd_agama`);
-
---
--- Indexes for table `tbl_berita`
---
-ALTER TABLE `tbl_berita`
- ADD PRIMARY KEY (`berita_id`);
-
---
--- Indexes for table `tbl_biaya_sekolah`
---
-ALTER TABLE `tbl_biaya_sekolah`
- ADD PRIMARY KEY (`id_biaya`);
-
---
--- Indexes for table `tbl_guru`
---
-ALTER TABLE `tbl_guru`
- ADD PRIMARY KEY (`id_guru`);
-
---
--- Indexes for table `tbl_history_kelas`
---
-ALTER TABLE `tbl_history_kelas`
- ADD PRIMARY KEY (`id_history`);
-
---
--- Indexes for table `tbl_jadwal`
---
-ALTER TABLE `tbl_jadwal`
- ADD PRIMARY KEY (`id_jadwal`);
-
---
--- Indexes for table `tbl_jenis_pembayaran`
---
-ALTER TABLE `tbl_jenis_pembayaran`
- ADD PRIMARY KEY (`id_jenis_pembayaran`);
-
---
--- Indexes for table `tbl_jenjang_sekolah`
---
-ALTER TABLE `tbl_jenjang_sekolah`
- ADD PRIMARY KEY (`id_jenjang`);
-
---
--- Indexes for table `tbl_jurusan`
---
-ALTER TABLE `tbl_jurusan`
- ADD PRIMARY KEY (`kd_jurusan`);
-
---
--- Indexes for table `tbl_kurikulum`
---
-ALTER TABLE `tbl_kurikulum`
- ADD PRIMARY KEY (`id_kurikulum`);
-
---
--- Indexes for table `tbl_kurikulum_detail`
---
-ALTER TABLE `tbl_kurikulum_detail`
- ADD PRIMARY KEY (`id_kurikulum_detail`);
-
---
--- Indexes for table `tbl_level_user`
---
-ALTER TABLE `tbl_level_user`
- ADD PRIMARY KEY (`id_level_user`);
-
---
--- Indexes for table `tbl_mapel`
---
-ALTER TABLE `tbl_mapel`
- ADD PRIMARY KEY (`kd_mapel`);
-
---
--- Indexes for table `tbl_nilai`
---
-ALTER TABLE `tbl_nilai`
- ADD PRIMARY KEY (`id_nilai`);
-
---
--- Indexes for table `tbl_pembayaran`
---
-ALTER TABLE `tbl_pembayaran`
- ADD PRIMARY KEY (`id_pembayaran`);
-
---
--- Indexes for table `tbl_rombel`
---
-ALTER TABLE `tbl_rombel`
- ADD PRIMARY KEY (`id_rombel`);
-
---
--- Indexes for table `tbl_ruangan`
---
-ALTER TABLE `tbl_ruangan`
- ADD PRIMARY KEY (`kd_ruang`);
-
---
--- Indexes for table `tbl_semester`
---
-ALTER TABLE `tbl_semester`
- ADD PRIMARY KEY (`id_semester`);
-
---
--- Indexes for table `tbl_siswa`
---
-ALTER TABLE `tbl_siswa`
- ADD PRIMARY KEY (`nis`);
-
---
--- Indexes for table `tbl_tahun_akademik`
---
-ALTER TABLE `tbl_tahun_akademik`
- ADD PRIMARY KEY (`id_tahun_akademik`);
-
---
--- Indexes for table `tbl_user`
---
-ALTER TABLE `tbl_user`
- ADD PRIMARY KEY (`id_user`);
-
---
--- Indexes for table `tbl_user_rule`
---
-ALTER TABLE `tbl_user_rule`
- ADD PRIMARY KEY (`id_rule`);
-
---
--- Indexes for table `tbl_walikelas`
---
-ALTER TABLE `tbl_walikelas`
- ADD PRIMARY KEY (`id_walikelas`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `tabel_menu`
---
-ALTER TABLE `tabel_menu`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
---
--- AUTO_INCREMENT for table `tbl_absen`
---
-ALTER TABLE `tbl_absen`
-MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `tbl_agama`
---
-ALTER TABLE `tbl_agama`
-MODIFY `kd_agama` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `tbl_berita`
---
-ALTER TABLE `tbl_berita`
-MODIFY `berita_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
---
--- AUTO_INCREMENT for table `tbl_biaya_sekolah`
---
-ALTER TABLE `tbl_biaya_sekolah`
-MODIFY `id_biaya` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
---
--- AUTO_INCREMENT for table `tbl_guru`
---
-ALTER TABLE `tbl_guru`
-MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT for table `tbl_history_kelas`
---
-ALTER TABLE `tbl_history_kelas`
-MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
---
--- AUTO_INCREMENT for table `tbl_jadwal`
---
-ALTER TABLE `tbl_jadwal`
-MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=202;
---
--- AUTO_INCREMENT for table `tbl_jenis_pembayaran`
---
-ALTER TABLE `tbl_jenis_pembayaran`
-MODIFY `id_jenis_pembayaran` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `tbl_jenjang_sekolah`
---
-ALTER TABLE `tbl_jenjang_sekolah`
-MODIFY `id_jenjang` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `tbl_kurikulum`
---
-ALTER TABLE `tbl_kurikulum`
-MODIFY `id_kurikulum` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `tbl_kurikulum_detail`
---
-ALTER TABLE `tbl_kurikulum_detail`
-MODIFY `id_kurikulum_detail` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
---
--- AUTO_INCREMENT for table `tbl_level_user`
---
-ALTER TABLE `tbl_level_user`
-MODIFY `id_level_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `tbl_nilai`
---
-ALTER TABLE `tbl_nilai`
-MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
---
--- AUTO_INCREMENT for table `tbl_pembayaran`
---
-ALTER TABLE `tbl_pembayaran`
-MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
---
--- AUTO_INCREMENT for table `tbl_rombel`
---
-ALTER TABLE `tbl_rombel`
-MODIFY `id_rombel` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `tbl_semester`
---
-ALTER TABLE `tbl_semester`
-MODIFY `id_semester` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `tbl_tahun_akademik`
---
-ALTER TABLE `tbl_tahun_akademik`
-MODIFY `id_tahun_akademik` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT for table `tbl_user`
---
-ALTER TABLE `tbl_user`
-MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
---
--- AUTO_INCREMENT for table `tbl_user_rule`
---
-ALTER TABLE `tbl_user_rule`
-MODIFY `id_rule` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=103;
---
--- AUTO_INCREMENT for table `tbl_walikelas`
---
-ALTER TABLE `tbl_walikelas`
-MODIFY `id_walikelas` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=75;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

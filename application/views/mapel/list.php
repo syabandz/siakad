@@ -3,10 +3,6 @@
     <div class="col-sm-12">
         <!-- start: PAGE TITLE & BREADCRUMB -->
         <ol class="breadcrumb">
-            <li>
-                <i class="clip-home-3"></i>&nbsp;&nbsp;
-                <a href="<?php echo base_url()?>welcome">Dashboard</a>
-            </li>
             <li class="active">
                 Data Mata Pelajaran
             </li>
@@ -49,57 +45,38 @@
 <script src="<?php echo base_url();?>assets/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-    $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
-    {
-        return {
-            "iStart": oSettings._iDisplayStart,
-            "iEnd": oSettings.fnDisplayEnd(),
-            "iLength": oSettings._iDisplayLength,
-            "iTotal": oSettings.fnRecordsTotal(),
-            "iFilteredTotal": oSettings.fnRecordsDisplay(),
-            "iPage": Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
-            "iTotalPages": Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
-        };
-    };
-
-    var t = $("#mytable").dataTable({
+    var t = $('#mytable').DataTable( {
         fixedHeader: { header: true },
         "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
-        initComplete: function() {
-            var api = this.api();
-            $('#mytable_filter input')
-                    .off('.DT')
-                    .on('keyup.DT', function(e) {
-                        if (e.keyCode == 13) {
-                            api.search(this.value).draw();
-                }
-            });
-        },
-        oLanguage: {
-            sProcessing: "loading..."
-        },
-        processing: true,
-        serverSide: true,
         ajax: {"url": "mapel/json", "type": "POST"},
-        columns: [
+        "order": [[ 2, 'asc' ]],
+        "columns": [
             {
-                "data": "kd_mapel",
-                "orderable": false
-            },{"data": "kd_mapel"},{"data": "nama_mapel"},
+                "data": null,
+                "width": "50px",
+                "className":"text-center",
+                "orderable": false,
+            }, 
+            {   "data": "kd_mapel",
+                "width": "120px",
+                "className":"text-center",
+            },
+            {   "data": "nama_mapel",
+                "width": "250px",
+                "className":"text-left",
+            },
             {
                 "data" : "action",
                 "orderable": false,
                 "className" : "text-center"
-            }
+            },
         ],
-        order: [[0, 'desc']],
-        rowCallback: function(row, data, iDisplayIndex) {
-            var info = this.fnPagingInfo();
-            var page = info.iPage;
-            var length = info.iLength;
-            var index = page * length + (iDisplayIndex + 1);
-            $('td:eq(0)', row).html(index);
-        }
     });
+        
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        });
+    }).draw();
 });
 </script>

@@ -1,6 +1,5 @@
 <?php
 
-
 class Model_guru extends CI_Model {
 
 	public $table="tbl_guru";
@@ -9,7 +8,7 @@ class Model_guru extends CI_Model {
     function json() {
         $this->datatables->select('id_guru,nuptk,nama_guru,tempat_lahir,tanggal_lahir,gender');
         $this->datatables->from('tbl_guru');
-        $this->datatables->add_column('action', '<a href="guru/edit/$1"><i class="fa fa-edit" title="update"></i></a><a href="guru/delete/$1",<i class="fa fa-trash-o" title="delete"></i></a>', 'id_guru');
+        $this->datatables->add_column('action', '<a href="guru/edit/$1"><i class="fa fa-edit" title="update"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onclick="deletedata($1)"<i class="fa fa-trash-o" title="delete"></i></a>', 'id_guru');
         return $this->datatables->generate();
     }
 
@@ -61,6 +60,13 @@ class Model_guru extends CI_Model {
         $this->db->where('password',  md5($password));
         $user = $this->db->get('tbl_guru')->row_array();
         return $user;
+	}
+	
+	function delete($id)
+    {
+        $this->db->where('id_guru', $id);
+        $this->db->delete('tbl_guru');
     }
+
 
 }

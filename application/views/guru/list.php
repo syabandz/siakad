@@ -3,10 +3,6 @@
     <div class="col-sm-12">
         <!-- start: PAGE TITLE & BREADCRUMB -->
         <ol class="breadcrumb">
-            <li>
-                <i class="clip-home-3"></i>&nbsp;&nbsp;
-                <a href="<?php echo base_url()?>welcome">Dashboard</a>
-            </li>
             <li class="active">
                 Data Guru
             </li>
@@ -18,7 +14,7 @@
     </div>
 </div>
 <!-- end: PAGE HEADER -->
-<div class="col-md-12">
+<div class="col-sm-12">
     <!-- start: DYNAMIC TABLE PANEL -->
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -34,76 +30,126 @@
         </div>
         <div class="panel-body">
             <?php echo anchor('guru/add','Tambah data',array('class'=>'btn btn-success btn-sm'))?><br /><br />
-            <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable"  aria-describedby="sample_1_info">
-                <thead>
-                    <tr>
-                        <th>NO</th>
-                        <th>NUPTK</th>
-                        <th>NAMA GURU</th>
-                        <th>TEMPAT LAHIR</th>
-                        <th>TANGGAL LAHIR</th>
-                        <th>GENDER</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-           </table>
+            <div class = "table-responsive">
+                <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable"  aria-describedby="sample_1_info">
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>NUPTK</th>
+                            <th>NAMA GURU</th>
+                            <th>TEMPAT LAHIR</th>
+                            <th>TANGGAL LAHIR</th>
+                            <th>GENDER</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 </div> 
 <script src="<?php echo base_url();?>assets/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-    $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
-    {
-        return {
-            "iStart": oSettings._iDisplayStart,
-            "iEnd": oSettings.fnDisplayEnd(),
-            "iLength": oSettings._iDisplayLength,
-            "iTotal": oSettings.fnRecordsTotal(),
-            "iFilteredTotal": oSettings.fnRecordsDisplay(),
-            "iPage": Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
-            "iTotalPages": Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
-        };
-    };
-
-    var t = $("#mytable").dataTable({
+    var t = $('#mytable').DataTable({
         fixedHeader: { header: true },
         "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
-        initComplete: function() {
-            var api = this.api();
-            $('#mytable_filter input')
-                    .off('.DT')
-                    .on('keyup.DT', function(e) {
-                        if (e.keyCode == 13) {
-                            api.search(this.value).draw();
-                }
-            });
-        },
-        oLanguage: {
-            sProcessing: "loading..."
-        },
-        processing: true,
-        serverSide: true,
         ajax: {"url": "guru/json", "type": "POST"},
-        columns: [
+        "order": [[ 2, 'asc' ]],
+        "columns": [
             {
-                "data": "id_guru",
-                "orderable": false
-            },{"data": "nuptk"},{"data": "nama_guru"},{"data": "tempat_lahir"},{"data": "tanggal_lahir"},{"data": "gender"},
+                "data": null,
+                "width": "50px",
+                "className":"text-center",
+                "orderable": false,
+            }, 
+            {   
+                "data": "nuptk",
+                "width": "120px",
+                "className":"text-center",
+            },
+            {   
+                "data": "nama_guru",
+                "width": "250px",
+                "className":"text-left",
+            },
+            {   
+                "data": "tempat_lahir",
+                "width": "105px",
+                "className":"text-left",
+            },
+            {   
+                "data": "tanggal_lahir",
+                "width": "105px",
+                "className":"text-center",
+            },
+            {   
+                "data": "gender",
+                "width": "5px",
+                "className":"text-center",
+            },
             {
                 "data" : "action",
                 "orderable": false,
                 "className" : "text-center"
-            }
+            },
         ],
-        order: [[0, 'desc']],
-        rowCallback: function(row, data, iDisplayIndex) {
-            var info = this.fnPagingInfo();
-            var page = info.iPage;
-            var length = info.iLength;
-            var index = page * length + (iDisplayIndex + 1);
-            $('td:eq(0)', row).html(index);
-        }
-    });
+    });        
+
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        });
+    }).draw();
 });
 </script>
+
+<script type="text/javascript">
+function deletedata(id_guru) {
+    swal({
+        type: "warning",
+        title: "Are you sure?",
+        text: "You will not be able to recover this Data!",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    },
+    function (isConfirm){
+        if (isConfirm) {
+            $.ajax({
+                url : "<?php echo base_url('guru/delete/') ?>",
+                type : "POST",
+                dataType : "JSON",
+                data : {id_guru:id_guru},
+                success: function(data) {
+                    window.location.href = "<?php echo site_url('guru'); ?>";
+                },
+                error: function() {
+                    swal({
+                        type : "error",
+                        title: "Failed",
+                        text : "Your Data can not deleted !",
+                        });
+                },
+            });
+        } else {
+            swal("Cancelled", "Your Data is safe :)", "error");
+        }
+    });
+}
+</script>
+
+<?php if ($this->session->userdata('message') <> '') { ?>
+<script type="text/javascript">
+$(document).ready(function() {
+    swal({
+            type : "success",
+            title: "Success",
+            text : "<?php echo $this->session->userdata('message'); ?> !",
+        });
+});
+</script>
+<?php } ?>

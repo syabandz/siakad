@@ -29,19 +29,30 @@
         <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/theme_light.css" type="text/css" id="skin_color">
         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/print.css" type="text/css" media="print"/>
-        <link rel="stylesheet" href="<?php echo base_url();?>assets/datatables.net-bs/css/dataTables.bootstrap.min.css" />
-        <link rel="stylesheet" href="<?php echo base_url();?>assets/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" />
         <link rel="stylesheet" href="<?php echo base_url();?>assets/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" />
         <link rel="stylesheet" href="<?php echo base_url();?>assets/snapkit-validation/snapkit-validation.min.css" />
         <link rel="stylesheet" href="<?php echo base_url();?>assets/select2/dist/css/select2.min.css" />
         <link rel="stylesheet" href="<?php echo base_url();?>assets/Flot/examples/shared/jquery-ui/jquery-ui.css" />
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/datatables.net-bs/css/dataTables.bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/sweetalert.css">
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" />
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/fullcalendar/fullcalendar/fullcalendar.css">
         <!--[if IE 7]>
         <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
         <![endif]-->
         <!-- end: MAIN CSS -->
-        <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-        <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/fullcalendar/fullcalendar/fullcalendar.css">
-        <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+        <style type="text/css">
+        .ui-autocomplete {
+            max-height: 300px;
+            max-width: 635px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: 20px;
+        }
+        .fc-time {
+            display: none;
+        }
+    </style>
     </head>
     <!-- end: HEAD -->
     <!-- start: BODY -->
@@ -57,7 +68,7 @@
                     </button>
                     <!-- end: RESPONSIVE MENU TOGGLER -->
                     <!-- start: LOGO -->
-                    <a class="navbar-brand" href="<?php echo base_url()?>welcome" style="height: 50px;">
+                    <a class="navbar-brand" href="<?php echo base_url()?>biodata" style="height: 50px;">
                         Siakad SMAIT Thariq Bin Ziyad
                     </a>
                     <!-- end: LOGO -->
@@ -72,11 +83,6 @@
                                 <i class="clip-chevron-down"></i>
                             </a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a href="<?php echo base_url();?>biodata">
-                                        <i class="fa fa-male"></i> &nbsp;User Profil
-                                    </a>
-                                </li>
                                 <li>
                                     <a href="<?php echo base_url();?>auth/logout">
                                         <i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp;Log Out
@@ -99,7 +105,7 @@
                 <div class="main-navigation navbar-collapse collapse">
                     <!-- start: MAIN MENU TOGGLER BUTTON -->
                     <ul class="main-navigation-menu">
-                        <a href="<?php echo base_url();?>welcome">
+                        <a href="<?php echo base_url();?>biodata">
                             <img src="<?php echo base_url();?>uploads/siakad1" width='120px' style="margin-left: 50px; margin-top: 20px; margin-bottom: 20px;">
                         </a>
                      </ul>
@@ -108,7 +114,7 @@
                     <ul class="main-navigation-menu">
                         <?php
                         $id_level_user = $this->session->userdata('id_level_user');
-                        $sql_menu = "SELECT * FROM tabel_menu WHERE id in(select id_menu from tbl_user_rule where id_level_user=$id_level_user) and is_main_menu=0";
+                        $sql_menu = "SELECT * FROM tabel_menu WHERE id in(select id_menu from tbl_user_rule where id_level_user = $id_level_user order by id_menu desc) and is_main_menu=0";
                         $main_menu = $this->db->query($sql_menu)->result();
                         foreach ($main_menu as $main) {
                             // chek apakah ada submenu ?
@@ -179,6 +185,8 @@
         <script src="<?php echo base_url();?>assets/datatables.net/js/jquery.dataTables.min.js"></script>
         <script src="<?php echo base_url();?>assets/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
         <script src="<?php echo base_url();?>assets/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/js/sweetalert.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/js/sweetalert-dev.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/blockUI/jquery.blockUI.js"></script>
         <script src="<?php echo base_url();?>assets/plugins/iCheck/jquery.icheck.min.js"></script>

@@ -44,13 +44,10 @@ class Guru extends CI_Controller {
 
     } 
     public function delete(){
-        $id_guru = $this->uri->segment(3);
-        if(!empty($id_guru)){
-            $this->db->where('id_guru',$id_guru);
-            $this->db->delete('tbl_guru');
-        }
-        redirect('guru');
-
+		$id = $this->input->post('id_guru');
+        $data=$this->model_guru->delete($id);
+        $this->session->set_flashdata('message', 'Delete Record Success');
+		echo json_encode($data);
     }
 
     public function upload_foto_guru(){

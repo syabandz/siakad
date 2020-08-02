@@ -4,10 +4,6 @@
         <!-- start: PAGE TITLE & BREADCRUMB -->
         <ol class="breadcrumb">
             <li>
-                <i class="clip-home-3"></i>&nbsp;&nbsp;
-                <a href="<?php echo base_url()?>welcome">Dashboard</a>
-            </li>
-            <li>
                 <a href="<?php echo base_url()?>guru">Data Guru</a>
             </li>
             <li class="active">
@@ -35,9 +31,7 @@
             </div>
         </div>
         <div class="panel-body">
-            <?php
-            echo form_open('guru/add','role="form" class="form-horizontal"');
-            ?>
+            <?php echo form_open('guru/add','role="form" class="form-horizontal"'); ?>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
                     NUPTK

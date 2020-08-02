@@ -7,10 +7,16 @@ class Siswa extends CI_Controller {
             //chekAksesModule();
 			$this->load->library('ssp') ;
             $this->load->model('model_siswa');
+            $this->load->library('datatables');
 
 		}
 
-		function data() {
+        public function json() {
+            header('Content-Type: application/json');
+            echo $this->model_siswa->json();
+        }
+
+        function data() {
 			// nama tabel
         $table = 'v_siswa';
         // nama PK
@@ -82,15 +88,14 @@ class Siswa extends CI_Controller {
         }
 
     } 
-    function delete(){
-        $nis = $this->uri->segment(3);
-        if(!empty($nis)){
-            $this->db->where('nis',$nis);
-            $this->db->delete('tbl_siswa');
-        }
-        redirect('siswa');
-
+    public function delete(){
+		$id = $this->input->post('nis');
+        $data=$this->model_siswa->delete($id);
+        $this->session->set_flashdata('message', 'Delete Record Success');
+		echo json_encode($data);
     }
+
+
     function upload_foto_siswa(){
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png';

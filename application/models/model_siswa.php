@@ -4,6 +4,14 @@ class Model_siswa extends CI_Model {
 
     public $table ="tbl_siswa";
     
+    // datatables
+    function json() {
+        $this->datatables->select('nis,nama,tempat_lahir,tanggal_lahir,gender');
+        $this->datatables->from('tbl_siswa');
+        $this->datatables->add_column('action', '<a href="siswa/edit/$1"><i class="fa fa-edit" title="update"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onclick="deletedata($1)"<i class="fa fa-trash-o" title="delete"></i></a>', 'nis');
+        return $this->datatables->generate();
+    }
+
     function save($foto) {
         $data = array(
             'nis'           => $this->input->post('nis', TRUE),
@@ -69,4 +77,11 @@ class Model_siswa extends CI_Model {
         return $absen;
     }
     
+	function delete($id)
+    {
+        $this->db->where('nis', $id);
+        $this->db->delete('tbl_siswa');
+    }
+
+
 }

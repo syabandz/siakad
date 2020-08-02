@@ -4,10 +4,6 @@
         <!-- start: PAGE TITLE & BREADCRUMB -->
         <ol class="breadcrumb">
             <li>
-                <i class="clip-home-3"></i>&nbsp;&nbsp;
-                <a href="<?php echo base_url()?>welcome">Dashboard</a>
-            </li>
-            <li>
                 <a href="<?php echo base_url()?>mapel">Data Mata Pelajaran</a>
             </li>
             <li class="active">

@@ -24,7 +24,7 @@ class Auth extends CI_Controller{
             if (!empty($loginUser)) {
                 // sukses login user
                 $this->session->set_userdata($loginUser);
-                redirect('welcome');
+                redirect('biodata');
             } elseif (!empty($loginGuru)) {
                 // login guru
   
@@ -43,7 +43,7 @@ class Auth extends CI_Controller{
                     'id_level_user' =>  5,
                     'id_siswa'       =>  $loginSiswa['id_siswa']);
                 $this->session->set_userdata($session);
-                redirect('welcome');
+                redirect('biodata');
 
 
 
