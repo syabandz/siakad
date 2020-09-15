@@ -36,8 +36,8 @@
                     <label class="col-sm-2 control-label" for="form-field-1">
                     NUPTK
                     </label>
-                    <div class="col-sm-4">
-                        <input type="text" name="nuptk"placeholder="NUPTK" id="nuptk" class="form-control" type="text">
+                    <div class="col-sm-8">
+                        <input type="text" name="nuptk"placeholder="NUPTK" id="nuptk" class="form-control" required />
                     </div>
                 </div>
                 <div class="form-group">
@@ -45,7 +45,7 @@
                         NAMA GURU
                     </label>
                     <div class="col-sm-8">
-                        <input type="text"  name="nama_guru" placeholder="MASUKAN NAMA GURU" id="nama_guru" class="form-control" type="text">
+                        <input type="text"  name="nama_guru" placeholder="MASUKAN NAMA GURU" id="nama_guru" class="form-control" required />
                     </div>
                 </div>
                 <div class="form-group">
@@ -53,17 +53,17 @@
                         TEMPAT,TGL LAHIR
                     </label>
                     <div class="col-sm-5">
-                        <input type="text" name="tempat_lahir" placeholder="TEMPAT LAHIR" id="tempat_lahir" class="form-control" type="text">
+                        <input type="text" name="tempat_lahir" placeholder="TEMPAT LAHIR" id="tempat_lahir" class="form-control" required />
                     </div>
                         <div class="col-sm-3">
-                        <input type="text" name="tanggal_lahir" placeholder="TANGGAL LAHIR" id="datepicker" class="form-control datepicker" >
+                        <input type="text" name="tanggal_lahir" placeholder="TANGGAL LAHIR" id="datepicker" style="background: white;" readonly class="form-control datepicker" required />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
                     GENDER
                     </label>
-                    <div class="col-sm-2">
+                    <div class="col-sm-8">
                         <?php
                         echo form_dropdown('gender',array('p'=>'LAKI-LAKI','w'=>'PEREMPUAN'),null,"class='form-control'")
                         ?>
@@ -74,7 +74,7 @@
                     USERNAME
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" name="username" placeholder="MASUKAN USERNAME" id="form-field-1" class="form-control" type="text">
+                        <input type="text" name="username" placeholder="MASUKAN USERNAME" id="form-field-1" class="form-control" required />
                     </div>
                 </div>
                 <div class="form-group">
@@ -82,15 +82,15 @@
                         PASSWORD
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" name="password" placeholder="MASUKAN PASSWORD" id="form-field-1" class="form-control" type="text">
+                        <input type="text" name="password" placeholder="MASUKAN PASSWORD" id="form-field-1" class="form-control" required />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
                     FOTO
                     </label>
-                    <div class="col-sm-5">
-                        <input type="file" name="userfile" >
+                    <div class="col-sm-8">
+                        <input type="file" name="userfile" class="form-control">
                     </div>
                 </div>
                 <br>

@@ -12,6 +12,7 @@ class Model_guru extends CI_Model {
         return $this->datatables->generate();
     }
 
+
 	public function save($foto)
 	{
 		$data = array(

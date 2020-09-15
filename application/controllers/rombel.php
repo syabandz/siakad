@@ -6,8 +6,15 @@ Class Rombel extends CI_Controller {
         parent::__construct();
         //chekAksesModule();
         $this->load->library('ssp');
-        $this->load->model('Model_rombel');
+        $this->load->model('model_rombel');
+        $this->load->library('datatables');
     }
+
+    public function json() {
+        header('Content-Type: application/json');
+        echo $this->model_rombel->json();
+    }
+
 
     function data() {
         // nama tabel
@@ -75,14 +82,11 @@ Class Rombel extends CI_Controller {
         }
     }
     
-    function delete(){
-        $id_rombel = $this->uri->segment(3);
-        if(!empty($id_rombel)){
-            // proses delete data
-            $this->db->where('id_rombel',$id_rombel);
-            $this->db->delete('tbl_rombel');
-        }
-        redirect('rombel');
+    public function delete(){
+		$id = $this->input->post('id_rombel');
+        $data=$this->model_rombel->delete($id);
+        $this->session->set_flashdata('message', 'Delete Record Success');
+		echo json_encode($data);
     }
     
     function show_combobox_rombel_by_jurusan(){

@@ -121,7 +121,7 @@
                             $submenu = $this->db->get_where('tabel_menu', array('is_main_menu' => $main->id));
                             if ($submenu->num_rows() > 0) {
                                 // tampilkan submenu disini
-                                echo "<li>
+                                echo "<li class='active'>
                                     <a href='javascript:void(0)'>
                                     <i class='" . $main->icon . "'></i>
                                     <span class='title'> " . strtoupper($main->nama_menu) . " </span>
@@ -137,7 +137,7 @@
                                      </li>";
                             } else {
                                 // tampilkan main menu
-                                echo "<li>" . anchor($main->link, "<i class='" . $main->icon . "'></i>" . strtoupper($main->nama_menu)) . "</li>";
+                                echo "<li class='active'>" . anchor($main->link, "<i class='" . $main->icon . "'></i>" . strtoupper($main->nama_menu)) . "</li>";
                             }
                         }
                         ?>

@@ -7,9 +7,9 @@ class Model_ruang extends CI_Model {
 
     // datatables
     function json() {
-        $this->datatables->select('kd_ruang,nama_ruang');
+        $this->datatables->select('id_ruangan, kd_ruang, nama_ruang');
         $this->datatables->from('tbl_ruangan');
-        $this->datatables->add_column('action', '<a href="ruang/edit/$1"><i class="fa fa-edit" title="update"></i></a><a href="ruang/delete/$1",<i class="fa fa-trash-o" title="delete"></i></a>', 'kd_ruang');
+        $this->datatables->add_column('action', '<a href="ruang/edit/$1"><i class="fa fa-edit" title="update"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onclick="deletedata($1)"<i class="fa fa-trash-o" title="delete"></i></a>', 'id_ruangan');
         return $this->datatables->generate();
     }
 
@@ -35,4 +35,10 @@ class Model_ruang extends CI_Model {
 		$this->db->where('kd_ruang',$kd_ruang);
 		$this->db->update($this->table,$data);
 	}
+
+	public function delete($id)
+    {
+        $this->db->where('id_ruangan', $id);
+        $this->db->delete('tbl_ruangan');
+    }
 }

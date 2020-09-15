@@ -14,7 +14,7 @@
     </div>
 </div>
 <!-- end: PAGE HEADER -->
-<div class="col-md-12">
+<div class="col-sm-12">
     <!-- start: DYNAMIC TABLE PANEL -->
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -29,16 +29,18 @@
         </div>
         <div class="panel-body">
             <?php echo anchor('mapel/add','Tambah data',array('class'=>'btn btn-success btn-sm'))?><br /><br />
-            <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>NO</th>
-                        <th>KODE MAPEL</th>
-                        <th>NAMA MATA PELAJARAN</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-           </table>
+            <div class = "table-responsive">
+                <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable">
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>KODE MAPEL</th>
+                            <th class="text-center">NAMA MATA PELAJARAN</th>
+                            <th>AKSI</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -57,11 +59,13 @@ $(document).ready(function() {
                 "className":"text-center",
                 "orderable": false,
             }, 
-            {   "data": "kd_mapel",
+            {   
+                "data": "kd_mapel",
                 "width": "120px",
                 "className":"text-center",
             },
-            {   "data": "nama_mapel",
+            {   
+                "data": "nama_mapel",
                 "width": "250px",
                 "className":"text-left",
             },
@@ -80,3 +84,54 @@ $(document).ready(function() {
     }).draw();
 });
 </script>
+
+
+<script type="text/javascript">
+function deletedata(id_mapel) {
+    swal({
+        type: "warning",
+        title: "Are you sure?",
+        text: "You will not be able to recover this Data!",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    },
+    function (isConfirm){
+        if (isConfirm) {
+            $.ajax({
+                url : "<?php echo base_url('mapel/delete/') ?>",
+                type : "POST",
+                dataType : "JSON",
+                data : {id_mapel:id_mapel},
+                success: function(data) {
+                    window.location.href = "<?php echo site_url('mapel'); ?>";
+                },
+                error: function() {
+                    swal({
+                        type : "error",
+                        title: "Failed",
+                        text : "Your Data can not deleted !",
+                        });
+                },
+            });
+        } else {
+            swal("Cancelled", "Your Data is safe :)", "error");
+        }
+    });
+}
+</script>
+
+<?php if ($this->session->userdata('message') <> '') { ?>
+<script type="text/javascript">
+$(document).ready(function() {
+    swal({
+            type : "success",
+            title: "Success",
+            text : "<?php echo $this->session->userdata('message'); ?> !",
+        });
+});
+</script>
+<?php } ?>

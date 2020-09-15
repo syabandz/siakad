@@ -89,7 +89,7 @@ class Siswa extends CI_Controller {
 
     } 
     public function delete(){
-		$id = $this->input->post('nis');
+		$id = $this->input->post('id_siswa');
         $data=$this->model_siswa->delete($id);
         $this->session->set_flashdata('message', 'Delete Record Success');
 		echo json_encode($data);

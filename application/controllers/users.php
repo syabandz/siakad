@@ -2,15 +2,21 @@
 
 class users extends CI_Controller {
 
-	function __construct(){
-			parent:: __construct();
-            //chekAksesModule();
-            $this->load->library('ssp') ;
-            $this->load->model('model_users');
-		}
+	function __construct() {
+        parent:: __construct();
+        //chekAksesModule();
+        $this->load->library('ssp') ;
+        $this->load->model('model_users');
+        $this->load->library('datatables');
+    }
 
-		function data() {
-			// nama tabel
+    public function json() {
+        header('Content-Type: application/json');
+        echo $this->model_users->json();
+    }
+
+    public function data() {
+        // nama tabel
         $table = 'v_tbl_user_new';
         // nama PK
         $primaryKey = 'id_user';
@@ -50,10 +56,12 @@ class users extends CI_Controller {
                 SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
         );
     }
-	function index(){
+
+    public function index() {
 		$this->template->load('template','users/list');
 	}
-	function add(){
+
+    public function add() {
          if (isset($_POST['submit'])){
          	$uploadFoto = $this->upload_foto_user();
          	$this->model_users->save($uploadFoto);
@@ -64,34 +72,27 @@ class users extends CI_Controller {
         }
 
     }
-    function edit(){
 
+    public function edit() {
         if (isset($_POST['submit'])){
-         
            $uploadFoto = $this->upload_foto_user();
            $this->model_users->update($uploadFoto);
-             
-            
             redirect('users');
-
         } else {
                 $id_user         = $this->uri->segment(3);
                 $data ['user'] 	 = $this->db->get_where('tbl_user',array('id_user'=>$id_user))->row_array();
                 $this->template->load('template','users/edit',$data);
         }
-
     } 
-    function delete(){
-        $id_user = $this->uri->segment(3);
-        if(!empty($id_user)){
-            $this->db->where('id_user',$id_user);
-            $this->db->delete('tbl_user');
-        }
-        redirect('users');
 
+    public function delete() {
+        $id = $this->input->post('id_user');
+        $data=$this->model_users->delete($id);
+        $this->session->set_flashdata('message', 'Delete Record Success');
+        echo json_encode($data);
     }
 
-  	function upload_foto_user(){
+    public function upload_foto_user() {
         $config['upload_path']          = './uploads/foto_user';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 1024;
@@ -99,12 +100,13 @@ class users extends CI_Controller {
         $this->upload->do_upload('userfile');
         $upload =$this->upload->data();
         return $upload['file_name'];
-
     }
-    function rule(){
+    
+    public function rule() {
         $this->template->load('template','users/rule');
     }
-    function modul(){
+
+    public function modul() {
         $level_user = $_GET['level_user'];
         echo "<table id='mytable2' class='table table-striped table-bordered table-hover table-full-width dataTable'>
                 <thead>
@@ -133,7 +135,7 @@ class users extends CI_Controller {
             </table>";
     }
     
-    function chek_akses($level_user,$id_menu){
+    public function chek_akses($level_user,$id_menu){
         $data = array('id_level_user'=>$level_user,'id_menu'=>$id_menu);
         $chek = $this->db->get_where('tbl_user_rule',$data);
         if($chek->num_rows()>0){
@@ -141,10 +143,7 @@ class users extends CI_Controller {
         }
     }
 
-
-
-
-    function addrule(){
+    public function addrule() {
         $level_user = $_GET['level_user'];
         $id_menu    = $_GET['id_menu'];
         $data       = array('id_level_user'=>$level_user,'id_menu'=>$id_menu);
@@ -159,6 +158,4 @@ class users extends CI_Controller {
             echo " berhasil delete akses modul";
         }
     }
-   
-    
 }

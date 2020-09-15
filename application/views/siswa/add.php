@@ -34,18 +34,10 @@
             <?php echo form_open_multipart('siswa/add','role="form" class="form-horizontal"'); ?>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
-                    FOTO
-                    </label>
-                    <div class="col-sm-5">
-                        <input type="file" name="userfile" >
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-1">
                         NIS
                     </label>
-                    <div class="col-sm-2">
-                        <input type="text" name="nis" placeholder="MASUKAN NIS" id="nis" class="form-control" type="text">
+                    <div class="col-sm-8">
+                        <input type="text" name="nis" placeholder="MASUKAN NIS" id="nis" class="form-control" required />
                     </div>
                 </div>
                 <div class="form-group">
@@ -53,7 +45,7 @@
                         NAMA LENGKAP
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" name="nama" placeholder="MASUKAN NAMA LENGKAP" id="nama" class="form-control" type="text">
+                        <input type="text" name="nama" placeholder="MASUKAN NAMA LENGKAP" id="nama" class="form-control" required />
                     </div>
                 </div>
                 <div class="form-group">
@@ -61,17 +53,17 @@
                         TEMPAT,TGL LAHIR
                     </label>
                     <div class="col-sm-5">
-                        <input type="text" name="tempat_lahir" placeholder="TEMPAT LAHIR" id="tempat_lahir" class="form-control" type="text">
+                        <input type="text" name="tempat_lahir" placeholder="TEMPAT LAHIR" id="tempat_lahir" class="form-control" required />
                     </div>
                         <div class="col-sm-3">
-                        <input type="text" name="tanggal_lahir" placeholder="TANGGAL LAHIR" id="tanggal_lahir" onclick = "displayDatePicker('tanggal_lahir')" class="form-control" type="text">
+                        <input type="text" name="tanggal_lahir" placeholder="TANGGAL LAHIR" id="tanggal_lahir" class="form-control datepicker" style="background: white" readonly required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
                     GENDER
                     </label>
-                    <div class="col-sm-2">
+                    <div class="col-sm-8">
                         <?php
                         echo form_dropdown('gender',array('L'=>'LAKI-LAKI','P'=>'PEREMPUAN'),null,"class='form-control'")
                         ?>
@@ -81,7 +73,7 @@
                     <label class="col-sm-2 control-label" for="form-field-1">
                     AGAMA
                     </label>
-                    <div class="col-sm-2">
+                    <div class="col-sm-8">
                         <?php
                         echo cmb_dinamis('agama','tbl_agama','nama_agama','kd_agama');
                         ?>
@@ -89,9 +81,9 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
-                    NAMA ROMBEL
+                    PILIH ROMBEL
                     </label>
-                    <div class="col-sm-2">
+                    <div class="col-sm-8">
                         <?php
                         echo cmb_dinamis('rombel','tbl_rombel','nama_rombel','id_rombel');
                         ?>
@@ -102,7 +94,7 @@
                         NAMA BAPAK
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" name="nama_ayah" placeholder="MASUKAN NAMA AYAH LENGKAP" id="nama" class="form-control" type="text">
+                        <input type="text" name="nama_ayah" placeholder="MASUKAN NAMA AYAH LENGKAP" id="nama" class="form-control" required />
                     </div>
                 </div>
                 <div class="form-group">
@@ -110,7 +102,7 @@
                         NAMA IBU
                     </label>
                     <div class="col-sm-8">
-                        <input type="text"  name="nama_ibu" placeholder="MASUKAN NAMA IBU LENGKAP" id="nama" class="form-control" type="text">
+                        <input type="text"  name="nama_ibu" placeholder="MASUKAN NAMA IBU LENGKAP" id="nama" class="form-control" required />
                     </div>
                 </div>
                 <div class="form-group">
@@ -118,7 +110,7 @@
                         ALAMAT
                     </label>
                     <div class="col-sm-8">
-                        <input type="text"  name="alamat" placeholder="MASUKAN ALAMAT LENGKAP" id="nama" class="form-control" type="text">
+                        <input type="text"  name="alamat" placeholder="MASUKAN ALAMAT LENGKAP" id="nama" class="form-control" required />
                     </div>
                 </div>
                 <div class="form-group">
@@ -126,7 +118,31 @@
                         SEKOLAH ASAL
                     </label>
                     <div class="col-sm-8">
-                        <input type="text"  name="sekolah_asal" placeholder="MASUKAN NAMA SEKOLAH ASAL" id="nama" class="form-control" type="text">
+                        <input type="text"  name="sekolah_asal" placeholder="MASUKAN NAMA SEKOLAH ASAL" id="nama" class="form-control" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="form-field-1">
+                    USERNAME
+                    </label>
+                    <div class="col-sm-8">
+                        <input type="text" name="username" placeholder="MASUKAN USERNAME" id="form-field-1" class="form-control" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="form-field-1">
+                        PASSWORD
+                    </label>
+                    <div class="col-sm-8">
+                        <input type="text" name="password" placeholder="MASUKAN PASSWORD" id="form-field-1" class="form-control" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="form-field-1">
+                    FOTO
+                    </label>
+                    <div class="col-sm-8">
+                        <input type="file" name="userfile" class="form-control" />
                     </div>
                 </div>
                 <br>

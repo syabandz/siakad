@@ -1,20 +1,29 @@
+<!-- start: PAGE HEADER -->
+<div class="row">
+    <div class="col-sm-12">
+        <!-- start: PAGE TITLE & BREADCRUMB -->
+        <ol class="breadcrumb">
+            <li>
+                <a href="<?php echo base_url()?>mapel">Data Menu</a>
+            </li>
+            <li class="active">
+                Ubah Data Menu
+            </li>
+        </ol>
+        <div class="page-header">
+            <h2> Data Menu </h2>
+        </div>
+        <!-- end: PAGE TITLE & BREADCRUMB -->
+    </div>
+</div>
+<!-- end: PAGE HEADER -->
 <div class="col-sm-12">
     <!-- start: TEXT FIELDS PANEL -->
     <div class="panel panel-default">
         <div class="panel-heading">
-            <i class="fa fa-external-link-square"></i>
-            Text Fields
+            <i class="fa fa-external-link-square"></i> Ubah Data Menu
             <div class="panel-tools">
                 <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
-                </a>
-                <a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
-                    <i class="fa fa-wrench"></i>
-                </a>
-                <a class="btn btn-xs btn-link panel-refresh" href="#">
-                    <i class="fa fa-refresh"></i>
-                </a>
-                <a class="btn btn-xs btn-link panel-expand" href="#">
-                    <i class="fa fa-resize-full"></i>
                 </a>
                 <a class="btn btn-xs btn-link panel-close" href="#">
                     <i class="fa fa-times"></i>
@@ -22,18 +31,16 @@
             </div>
         </div>
         <div class="panel-body">
-
             <?php
             echo form_open('menu/edit', 'role="form" class="form-horizontal"');
             echo form_hidden('id', $menu['id']);
             ?>
-
             <div class="form-group">
                 <label class="col-sm-2 control-label" for="form-field-1">
                     NAMA MENU
                 </label>
                 <div class="col-sm-9">
-                    <input type="text" value="<?php echo $menu['nama_menu'] ?>" name="nama menu" placeholder="MASUKAN NAMA MENU" id="form-field-1" class="form-control">
+                    <input type="text" value="<?php echo $menu['nama_menu'] ?>" name="nama menu" placeholder="MASUKAN NAMA MENU" id="form-field-1" class="form-control" />
                 </div>
             </div>
             <div class="form-group">
@@ -41,7 +48,7 @@
                     LINK
                 </label>
                 <div class="col-sm-9">
-                    <input type="text" name="link" value="<?php echo $menu['link'] ?>" placeholder="MASUKAN LINK" id="form-field-1" class="form-control">
+                    <input type="text" name="link" value="<?php echo $menu['link'] ?>" placeholder="MASUKAN LINK" id="form-field-1" class="form-control" />
                 </div>
             </div>
             <div class="form-group">
@@ -49,7 +56,7 @@
                     ICON
                 </label>
                 <div class="col-sm-9">
-                    <input type="text" name="icon" value="<?php echo $menu['icon'] ?>" placeholder="MASUKAN KODE ICON" id="form-field-1" class="form-control">
+                    <input type="text" name="icon" value="<?php echo $menu['icon'] ?>" placeholder="MASUKAN KODE ICON" id="form-field-1" class="form-control" />
                 </div>
             </div>
             <div class="form-group">
@@ -70,15 +77,13 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="form-field-1">
-
-                </label>
-                <div class="col-sm-1">
-                    <button type="submit" name="submit" class="btn btn-danger btn-sm">SIMPAN</button>
-                </div>
-                <div class="col-sm-1">
-                    <?php echo anchor('menu', 'Kembali', array('class' => 'btn btn-info btn-sm')); ?>
+            <br>
+            <div class="form-group pull-right">
+                <div class="col-sm-5">
+                    <button type="submit" name="submit" class="btn btn-primary btn-sm">SIMPAN</button> 
+                    </div>
+                    <div class="col-sm-1">
+                    <?php echo anchor('menu','KEMBALI',array('class'=>'btn btn-warning btn-sm'));?>
                 </div>
             </div>
             </form>

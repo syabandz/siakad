@@ -7,9 +7,16 @@ class Jurusan extends CI_Controller {
 
 			$this->load->library('ssp') ;
             $this->load->model('model_jurusan');
+            $this->load->library('datatables');
 		}
 
-		function data() {
+        public function json() {
+            header('Content-Type: application/json');
+            echo $this->model_jurusan->json();
+        }
+
+
+        function data() {
 			// nama tabel
         $table = 'tbl_jurusan';
         // nama PK
@@ -70,14 +77,15 @@ class Jurusan extends CI_Controller {
         }
 
     } 
-    function delete(){
-        $kd_jurusan = $this->uri->segment(3);
-        if(!empty($kd_jurusan)){
-            $this->db->where('kd_jurusan',$kd_jurusan);
-            $this->db->delete('tbl_jurusan');
-        }
-        redirect('jurusan');
 
+
+    public function delete(){
+		$id = $this->input->post('id_jurusan');
+        $data=$this->model_jurusan->delete($id);
+        $this->session->set_flashdata('message', 'Delete Record Success');
+		echo json_encode($data);
     }
-  
+
+    
+
 }

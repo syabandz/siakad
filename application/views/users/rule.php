@@ -1,3 +1,22 @@
+<!-- start: PAGE HEADER -->
+<div class="row">
+    <div class="col-sm-12">
+        <!-- start: PAGE TITLE & BREADCRUMB -->
+        <ol class="breadcrumb">
+            <li>
+                <a href="<?php echo base_url()?>users">Hak Akses</a>
+            </li>
+            <li class="active">
+                Setting Hak Akses
+            </li>
+        </ol>
+        <div class="page-header">
+            <h2> Hak Akses </h2>
+        </div>
+        <!-- end: PAGE TITLE & BREADCRUMB -->
+    </div>
+</div>
+<!-- end: PAGE HEADER -->
 <div class="col-md-4">
     <!-- start: DYNAMIC TABLE PANEL -->
 

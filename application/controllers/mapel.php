@@ -3,56 +3,23 @@
 class Mapel extends CI_Controller {
 
 	function __construct(){
-			parent:: __construct();
-
-			$this->load->library('ssp') ;
-            $this->load->model('model_mapel');
-            $this->load->library('datatables');
-		}
-
-        public function json() {
-            header('Content-Type: application/json');
-            echo $this->model_mapel->json();
-        }
-    
-        function data() {
-			// nama tabel
-        $table = 'tbl_mapel';
-        // nama PK
-        $primaryKey = 'kd_mapel';
-        // list field
-        $columns = array(
-           
-            array('db' => 'kd_mapel', 'dt' => 'kd_mapel'),
-            array('db' => 'nama_mapel', 'dt' => 'nama_mapel'),
-            
-            array(
-                'db' => 'kd_mapel',
-                'dt' => 'aksi',
-                'formatter' => function( $d) {
-                    return 
-                           anchor('mapel/edit/' . $d, '<i class="fa fa-edit"></i>', 'class="btn btn-xs btn-danger tooltips" data-placement="top" data-original-title="edit"').'
-                        '. anchor('mapel/delete/' . $d, '<i class="fa fa-trash-o"</i>', 'class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="delete"');
-                    
-                
-                }
-            )
-        );
-        $sql_details = array(
-            'user' => $this->db->username,
-            'pass' => $this->db->password,
-            'db' => $this->db->database,
-            'host' => $this->db->hostname
-        );
- 
-        echo json_encode(
-                SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
-        );
+        parent:: __construct();
+        //chekAksesModule();
+        $this->load->library('ssp') ;
+        $this->load->model('model_mapel');
+        $this->load->library('datatables');
     }
-	function index(){
+
+    public function json() {
+        header('Content-Type: application/json');
+        echo $this->model_mapel->json();
+    }
+    
+	public function index(){
 		$this->template->load('template','mapel/list');
-	}
-	function add(){
+    }
+    
+	public function add(){
          if (isset($_POST['submit'])){
              
                 $this->model_mapel->save();
@@ -62,7 +29,8 @@ class Mapel extends CI_Controller {
         }
 
     }
-    function edit(){
+
+    public function edit(){
 
         if (isset($_POST['submit'])){
          
@@ -77,14 +45,16 @@ class Mapel extends CI_Controller {
         }
 
     } 
-    function delete(){
-        $kd_mapel = $this->uri->segment(3);
-        if(!empty($kd_mapel)){
-            $this->db->where('kd_mapel',$kd_mapel);
-            $this->db->delete('tbl_mapel');
-        }
-        redirect('mapel');
 
+
+    public function delete(){
+		$id = $this->input->post('id_mapel');
+        $data=$this->model_mapel->delete($id);
+        $this->session->set_flashdata('message', 'Delete Record Success');
+		echo json_encode($data);
     }
-  
+
+    
+
+
 }

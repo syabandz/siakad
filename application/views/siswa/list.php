@@ -36,11 +36,11 @@
                     <tr>
                         <th>NO</th>
                         <th>NIS</th>
-                        <th>NAMA</th>
-                        <th>TEMPAT LAHIR</th>
-                        <th>TANGGAL LAHIR</th>
-                        <th>GENDER</th>
-                        <th>Action</th>
+                        <th class="text-center">NAMA SISWA</th>
+                        <th class="text-center">TEMPAT LAHIR</th>
+                        <th>TGL. LAHIR</th>
+                        <th class="text-center">GENDER</th>
+                        <th>AKSI</th>
                     </tr>
                 </thead>
             </table>
@@ -107,7 +107,7 @@ $(document).ready(function() {
 </script>
 
 <script type="text/javascript">
-function deletedata(nis) {
+function deletedata(id_siswa) {
     swal({
         type: "warning",
         title: "Are you sure?",
@@ -125,7 +125,7 @@ function deletedata(nis) {
                 url : "<?php echo base_url('siswa/delete/') ?>",
                 type : "POST",
                 dataType : "JSON",
-                data : {nis:nis},
+                data : {id_siswa:id_siswa},
                 success: function(data) {
                     window.location.href = "<?php echo site_url('siswa'); ?>";
                 },

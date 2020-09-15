@@ -18,8 +18,7 @@
     <!-- start: DYNAMIC TABLE PANEL -->
     <div class="panel panel-default">
         <div class="panel-heading">
-            <i class="fa fa-external-link-square"></i>
-            Data Guru
+            <i class="fa fa-external-link-square"></i> Data Guru
             <div class="panel-tools">
                 <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
                 </a>
@@ -29,18 +28,18 @@
             </div>
         </div>
         <div class="panel-body">
-            <?php echo anchor('guru/add','Tambah data',array('class'=>'btn btn-success btn-sm'))?><br /><br />
+        <?php echo anchor('guru/add','Tambah data',array('class'=>'btn btn-success btn-sm'))?><br /><br />
             <div class = "table-responsive">
-                <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable"  aria-describedby="sample_1_info">
+                <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable">
                     <thead>
                         <tr>
                             <th>NO</th>
                             <th>NUPTK</th>
-                            <th>NAMA GURU</th>
-                            <th>TEMPAT LAHIR</th>
-                            <th>TANGGAL LAHIR</th>
+                            <th class="text-center">NAMA GURU</th>
+                            <th class="text-center">TEMPAT LAHIR</th>
+                            <th>TGL. LAHIR</th>
                             <th>GENDER</th>
-                            <th>Action</th>
+                            <th>AKSI</th>
                         </tr>
                     </thead>
                 </table>
@@ -103,6 +102,7 @@ $(document).ready(function() {
     }).draw();
 });
 </script>
+
 
 <script type="text/javascript">
 function deletedata(id_guru) {

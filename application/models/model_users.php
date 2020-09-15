@@ -5,6 +5,15 @@ class Model_users extends CI_Model {
 
 	public $table="tbl_user";
 
+    // datatables
+    function json() {
+        $this->datatables->select('tbl_user.id_user, tbl_user.nama_lengkap, tbl_level_user.nama_level, tbl_user.id_level_user');
+        $this->datatables->from('tbl_user');
+        $this->datatables->join('tbl_level_user', 'tbl_user.id_level_user = tbl_level_user.id_level_user');
+        $this->datatables->add_column('action', '<a href="users/edit/$1"><i class="fa fa-edit" title="update"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onclick="deletedata($1)"<i class="fa fa-trash-o" title="delete"></i></a>', 'id_user');
+        return $this->datatables->generate();
+    }
+
 	public function save($foto)
 	{
 		$data = array(
@@ -28,7 +37,7 @@ class Model_users extends CI_Model {
 	}
 
 
-	function update($foto) {
+	public function update($foto) {
         if(empty($foto)){
             // jangan update field foto
         $data = array(
@@ -69,4 +78,10 @@ class Model_users extends CI_Model {
 		$this->db->where('id_user',$id_user);
 		$this->db->update($this->table,$data);
 	}
+
+	public function delete($id)
+    {
+        $this->db->where('id_user', $id);
+        $this->db->delete('tbl_user');
+    }
 }

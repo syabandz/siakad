@@ -7,9 +7,15 @@ class Tahun_akademik extends CI_Controller {
 
 			$this->load->library('ssp') ;
             $this->load->model('model_tahun_akademik');
+            $this->load->library('datatables');
 		}
 
-		function data() {
+        public function json() {
+            header('Content-Type: application/json');
+            echo $this->model_tahun_akademik->json();
+        }
+
+        function data() {
 			// nama tabel
         $table = 'tbl_tahun_akademik';
         // nama PK
@@ -82,14 +88,13 @@ class Tahun_akademik extends CI_Controller {
         }
 
     } 
-    function delete(){
-        $id_tahun_akademik = $this->uri->segment(3);
-        if(!empty($id_tahun_akademik)){
-            $this->db->where('id_tahun_akademik',$id_tahun_akademik);
-            $this->db->delete('tbl_tahun_akademik');
-        }
-        redirect('tahun_akademik');
 
+
+    public function delete(){
+		$id = $this->input->post('id_tahun_akademik');
+        $data=$this->model_tahun_akademik->delete($id);
+        $this->session->set_flashdata('message', 'Delete Record Success');
+		echo json_encode($data);
     }
   
 }

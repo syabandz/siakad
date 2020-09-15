@@ -29,6 +29,7 @@ class Guru extends CI_Controller {
         }
 
     }
+
     public function edit(){
 
         if (isset($_POST['submit'])){
@@ -43,6 +44,7 @@ class Guru extends CI_Controller {
         }
 
     } 
+   
     public function delete(){
 		$id = $this->input->post('id_guru');
         $data=$this->model_guru->delete($id);

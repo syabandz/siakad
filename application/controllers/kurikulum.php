@@ -5,7 +5,13 @@ Class Kurikulum extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->library('ssp');
-        $this->load->model('Model_kurikulum');
+        $this->load->model('model_kurikulum');
+        $this->load->library('datatables');
+    }
+
+    public function json() {
+        header('Content-Type: application/json');
+        echo $this->model_kurikulum->json();
     }
 
     function data() {
@@ -71,16 +77,6 @@ Class Kurikulum extends CI_Controller {
         }
     }
 
-    function delete() {
-        $id_kurikulum = $this->uri->segment(3);
-        if (!empty($id_kurikulum)) {
-            // proses delete data
-            $this->db->where('id_kurikulum', $id_kurikulum);
-            $this->db->delete('tbl_kurikulum');
-        }
-        redirect('kurikulum');
-    }
-    
     function detail(){
         $infoSekolah = "SELECT js.jumlah_kelas
                         FROM tbl_jenjang_sekolah as js,tabel_sekolah as si 
@@ -147,5 +143,14 @@ Class Kurikulum extends CI_Controller {
         }
         redirect('kurikulum/detail/'.$id_kurikulum);
     }
+
+
+    public function delete(){
+		$id = $this->input->post('id_kurikulum');
+        $data=$this->model_kurikulum->delete($id);
+        $this->session->set_flashdata('message', 'Delete Record Success');
+		echo json_encode($data);
+    }
+
 
 }

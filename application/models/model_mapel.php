@@ -1,17 +1,17 @@
 <?php
 
-
 class Model_mapel extends CI_Model {
 
 	public $table="tbl_mapel";
 
     // datatables
     function json() {
-        $this->datatables->select('kd_mapel,nama_mapel');
+        $this->datatables->select('id_mapel, kd_mapel,nama_mapel');
         $this->datatables->from('tbl_mapel');
-        $this->datatables->add_column('action', '<a href="mapel/edit/$1"><i class="fa fa-edit" title="update"></i></a><a href="mapel/delete/$1",<i class="fa fa-trash-o" title="delete"></i></a>', 'kd_mapel');
+        $this->datatables->add_column('action', '<a href="mapel/edit/$1"><i class="fa fa-edit" title="update"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onclick="deletedata($1)"<i class="fa fa-trash-o" title="delete"></i></a>', 'id_mapel');
         return $this->datatables->generate();
     }
+
 
 	public function save()
 	{
@@ -36,4 +36,12 @@ class Model_mapel extends CI_Model {
 		$this->db->where('kd_mapel',$kd_mapel);
 		$this->db->update($this->table,$data);
 	}
+
+	function delete($id)
+    {
+        $this->db->where('id_mapel', $id);
+        $this->db->delete('tbl_mapel');
+    }
+
+
 }

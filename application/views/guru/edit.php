@@ -31,15 +31,15 @@
             </div>
         </div>
         <div class="panel-body">
-        <?php   echo form_open_multipart('guru/edit','role="form" class="form-horizontal"');
-                echo form_hidden('id_guru',$guru['id_guru']);
-        ?>
+            <?php   echo form_open_multipart('guru/edit','role="form" class="form-horizontal"');
+                    echo form_hidden('id_guru',$guru['id_guru']);
+            ?>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
-                    NUPTK
+                        NUPTK
                     </label>
-                    <div class="col-sm-4">
-                        <input type="text"  value="<?php echo $guru['nuptk']?>" name="nuptk"placeholder="NUPTK" id="nuptk" class="form-control" type="text">
+                    <div class="col-sm-8">
+                        <input type="text" value="<?php echo $guru['nuptk']?>" name="nuptk" placeholder="NUPTK" id="nuptk" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
@@ -47,7 +47,7 @@
                         NAMA GURU
                     </label>
                     <div class="col-sm-8">
-                        <input type="text"  v value="<?php echo $guru['nama_guru']?>" name="nama_guru" placeholder="MASUKAN NAMA GURU" id="nama_guru" class="form-control" type="text">
+                        <input type="text"  value="<?php echo $guru['nama_guru']?>" name="nama_guru" placeholder="MASUKAN NAMA GURU" id="nama_guru" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
@@ -55,26 +55,42 @@
                         TEMPAT,TGL LAHIR
                     </label>
                     <div class="col-sm-5">
-                        <input type="text" name="tempat_lahir" value="<?php echo $guru['tempat_lahir']?>"placeholder="TEMPAT LAHIR" id="tempat_lahir" class="form-control" type="text">
+                        <input type="text" name="tempat_lahir" value="<?php echo $guru['tempat_lahir']?>"placeholder="TEMPAT LAHIR" id="tempat_lahir" class="form-control">
                     </div>
                         <div class="col-sm-3">
-                        <input type="text" name="tanggal_lahir" value="<?php echo $guru['tanggal_lahir']?>" placeholder="TANGGAL LAHIR" id="tanggal_lahir" onclick = "displayDatePicker('tanggal_lahir')" class="form-control" type="text">
+                        <input type="text" name="tanggal_lahir" value="<?php echo $guru['tanggal_lahir']?>" placeholder="TANGGAL LAHIR" id="tanggal_lahir" style="background: white;" readonly class="form-control datepicker">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
                         GENDER
                     </label>
-                    <div class="col-sm-2">
+                    <div class="col-sm-8">
                         <?php echo form_dropdown('gender',array('p'=>'LAKI-LAKI','w'=>'PEREMPUAN'),$guru['gender'],"class='form-control'"); ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="form-field-1">
+                    USERNAME
+                    </label>
+                    <div class="col-sm-8">
+                        <input type="text" name="username" placeholder="MASUKAN USERNAME" id="form-field-1" class="form-control" value="<?php echo $guru['username']?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="form-field-1">
+                        PASSWORD
+                    </label>
+                    <div class="col-sm-8">
+                        <input type="text" name="password" placeholder="MASUKAN PASSWORD" id="form-field-1" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
                     FOTO
                     </label>
-                    <div class="col-sm-5">
-                        <input type="file" name="userfile" >
+                    <div class="col-sm-8">
+                        <input type="file" name="userfile" class="form-control">
                     </div>
                 </div>
                 <br>
